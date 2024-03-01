@@ -38,37 +38,3 @@ export const setDescription = (description) => ({
     type: 'SET_DESCRIPTION',
     payload: description
 });
-
-export const setPosition = (position, id) => ({
-    type: 'SET_POSITION',
-    payload: {position, id}
-});
-
-export const setCompany = (company, id) => ({
-    type: 'SET_COMPANY',
-    payload: {company, id}
-});
-
-export const setCity = (city, id) => ({
-    type: 'SET_CITY',
-    payload: {city, id}
-});
-
-export const setFrom = (from, id) => ({
-    type: 'SET_FROM',
-    payload: {from, id}
-});
-
-export const setTo = (to, id) => ({
-    type: 'SET_TO',
-    payload: {to, id}
-});
-
-export const addExperienceField = () => ({
-    type: 'ADD_EXPERIENCE_FIELD'
-});
-
-export const deleteExperienceField = (id) => ({
-    type: 'DELETE_EXPERIENCE_FIELD',
-    payload: id
-});

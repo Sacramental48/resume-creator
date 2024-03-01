@@ -1,11 +1,12 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import styles from './TitleResumeMain.module.css'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import styles from './TitleResumeMain.module.css';
 
 const TitleResumeMain = () => {
     const inputPersonalDataField = useSelector(state => state.personalField);
-    const inputExperienceDataField = useSelector(state => state.experienceStateField);
-    
+    const experienceFields = useSelector(state => state.experienceStateField);
+    const experienceFieldsToObj = Object.values(experienceFields);
+
     return (
         <div className={styles.info}>
             <section className={styles.section}>
@@ -15,27 +16,20 @@ const TitleResumeMain = () => {
                 </>
                 <>
                     <span className={styles.title}>Experience</span>
-                    {
-                        inputExperienceDataField.length !== 0 ?
-                        // {
-                            
-                            inputExperienceDataField.map((experience, index) => (
-                                <div key={index} className={styles.experienceBody}>
-                                    <div>
-                                        {
-                                            inputExperienceDataField.length !== 0 ? <span>{experience.from} - {experience.to}</span> : '-'
-                                        }
-                                    </div>
-                                    <div className={styles.experienceDescription}>
-                                        <p>{experience.position}</p>
-                                        <p>{experience.company}</p>
-                                        <p>{experience.city}</p>
-                                    </div>
+                    {experienceFieldsToObj.length !== 0 ? (
+                        experienceFieldsToObj.map((experience, index) => (
+                            <div key={index} className={styles.experienceBody}>
+                                <span>{experience.from} - {experience.to}</span>
+                                <div className={styles.experienceDescription}>
+                                    <p>{experience.position}</p>
+                                    <p>{experience.company}</p>
+                                    <p>{experience.city}</p>
                                 </div>
-                            ))
-                        // }
-                        : <p>-</p>
-                    }
+                            </div>
+                        ))
+                    ) : (
+                        <p>-</p>
+                    )}
                 </>
                 <>
                     <span className={styles.title}>Education</span>
@@ -43,7 +37,7 @@ const TitleResumeMain = () => {
                 </>
             </section>
             <aside className={styles.aside}>
-                <img src={inputPersonalDataField.photo !== '' ? inputPersonalDataField.photo : '/img/default-avatar.png'} alt={inputPersonalDataField.photo} />
+                <img src={inputPersonalDataField.photo || '/img/default-avatar.png'} alt={inputPersonalDataField.photo} />
                 <div className={styles.asideBody}>
                     <span>Personal Details</span>
                     <address>
@@ -57,7 +51,7 @@ const TitleResumeMain = () => {
                 </div>
             </aside>
         </div>
-    )
-}
+    );
+};
 
 export default TitleResumeMain;

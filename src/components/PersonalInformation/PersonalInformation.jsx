@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription } from '@/store/actions.js';
+import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription } from '@/store/actions/personalActions.js';
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
 import CustomInput from '@/components/UI/Input/Input.jsx'
