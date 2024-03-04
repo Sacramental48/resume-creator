@@ -3,9 +3,9 @@ import CustomInput from '@/components/UI/Input/Input.jsx'
 import Button from '@/components/UI/Button/Button.jsx'
 import styles from './ExperienceField.module.css'
 import { useDispatch } from 'react-redux'
-import { setPosition, setCompany, setCity, setFrom, setTo, deleteExperienceField } from '@/store/actions/experienceActions.js';
+import { setPosition, setCompany, setCity, setFrom, setTo } from '@/store/actions/experienceActions.js';
 
-const ExperienceField = ({ index }) => {
+const ExperienceField = ({ deleteField, index }) => {
     const dispatch = useDispatch();
 
     const getInputValue = (e) => {
@@ -31,10 +31,6 @@ const ExperienceField = ({ index }) => {
         }
     };
 
-    const deleteCurrentField = () => {
-        dispatch(deleteExperienceField(index));
-    };
-
     return (
         <section className={styles.experienceField}>
             <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
@@ -42,7 +38,7 @@ const ExperienceField = ({ index }) => {
             <CustomInput type="text" name="city" onChange={getInputValue} placeholder="City" />
             <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
             <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
-            <Button text="Delete" color="delete" onClick={deleteCurrentField}></Button>
+            <Button text="Delete" color="delete" onClick={deleteField}></Button>
         </section>
     )
 }

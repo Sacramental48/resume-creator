@@ -30,5 +30,5 @@ export const addExperienceField = () => ({
 
 export const deleteExperienceField = (index) => ({
     type: 'DELETE_EXPERIENCE_FIELD',
-    payload: {index}
+    payload: index
 });
