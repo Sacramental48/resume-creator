@@ -4,55 +4,25 @@ function getExperienceStateField(state = experienceStateField, action) {
     const index = action.payload?.index;
     switch(action.type) {
         case 'ADD_EXPERIENCE_FIELD':
-            return [...state];
+            return [...state, {}];
 
         case 'DELETE_EXPERIENCE_FIELD':
-            return Object.values(state).filter((experience, index) => index !== action.payload);
+            return state.filter((experience, idx) => idx !== action.payload);
 
-        case 'SET_POSITION':
-            return {
-                ...state,
-                [index]: {
-                    ...state[index],
-                    position: action.payload.position,
-                }
-            };
-            
-        case 'SET_COMPANY':
-            return {
-                ...state,
-                [index]: {
-                    ...state[index],
-                    company: action.payload.company
-                }
-            };
+        case 'SET_EXPERIENCE_POSITION':
+            return state.map((item, idx) => idx === index ? { ...item, position: action.payload.position } : item);
 
-        case 'SET_CITY':
-            return {
-                ...state,
-                [index]: {
-                    ...state[index],
-                    city: action.payload.city
-                }
-            };
+        case 'SET_EXPERIENCE_COMPANY':
+            return state.map((item, idx) => idx === index ? { ...item, company: action.payload.company } : item);
 
-        case 'SET_FROM':
-            return {
-                ...state,
-                [index]: {
-                    ...state[index],
-                    from: action.payload.from
-                }
-            };
+        case 'SET_EXPERIENCE_CITY':
+            return state.map((item, idx) => idx === index ? { ...item, city: action.payload.city } : item);
 
-        case 'SET_TO':
-            return {
-                ...state,
-                [index]: {
-                    ...state[index  ],
-                    to: action.payload.to
-                }
-            };
+        case 'SET_EXPERIENCE_FROM':
+            return state.map((item, idx) => idx === index ? { ...item, from: action.payload.from } : item);
+
+        case 'SET_EXPERIENCE_TO':
+            return state.map((item, idx) => idx === index ? { ...item, to: action.payload.to } : item);
 
         default: 
             return state;

@@ -1,26 +1,26 @@
 export const setPosition = (position, index) => ({
-    type: 'SET_POSITION',
+    type: 'SET_EXPERIENCE_POSITION',
     payload: {position, index},
     
 });
 
 export const setCompany = (company, index) => ({
-    type: 'SET_COMPANY',
+    type: 'SET_EXPERIENCE_COMPANY',
     payload: {company, index}
 });
 
 export const setCity = (city, index) => ({
-    type: 'SET_CITY',
+    type: 'SET_EXPERIENCE_CITY',
     payload: {city, index}
 });
 
 export const setFrom = (from, index) => ({
-    type: 'SET_FROM',
+    type: 'SET_EXPERIENCE_FROM',
     payload: {from, index}
 });
 
 export const setTo = (to, index) => ({
-    type: 'SET_TO',
+    type: 'SET_EXPERIENCE_TO',
     payload: {to, index}
 });
 
