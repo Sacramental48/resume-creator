@@ -36,3 +36,7 @@ export const deleteEducationField = (index) => ({
     type: 'DELETE_EDUCATION_FIELD',
     payload: index
 });
+
+export const clearAllEducationFields = () => ({
+    type: 'DELETE_ALL_EDUCATION_FIELDS'
+});

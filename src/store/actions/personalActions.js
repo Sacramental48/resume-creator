@@ -38,3 +38,7 @@ export const setDescription = (description) => ({
     type: 'SET_DESCRIPTION',
     payload: description
 });
+
+export const clearPersonalField = () => ({
+    type: 'CLEAR_PERSONAL_FIELD'
+});

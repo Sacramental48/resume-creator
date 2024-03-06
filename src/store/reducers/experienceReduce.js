@@ -9,6 +9,9 @@ function getExperienceStateField(state = experienceStateField, action) {
         case 'DELETE_EXPERIENCE_FIELD':
             return state.filter((experience, idx) => idx !== action.payload);
 
+        case 'DELETE_ALL_EDUCATION_FIELDS':
+            return [];
+
         case 'SET_EXPERIENCE_POSITION':
             return state.map((item, idx) => idx === index ? { ...item, position: action.payload.position } : item);
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription } from '@/store/actions/personalActions.js';
+import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
+import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
 import CustomInput from '@/components/UI/Input/Input.jsx'
@@ -9,10 +10,13 @@ import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
     const inputDataMainField = useSelector(state => state.personalField);
+    const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
 
     const getInputValue = (e) => {
         const { name, value } = e.target;
+        dispatch(getBooleanValue(false));
+        
         switch (name) {
             case 'firstName':
                 dispatch(setFirstName(value));
@@ -42,6 +46,12 @@ const PersonalInformation = () => {
                 break;
         }
     };
+
+    React.useEffect(() => {
+        if(toggleBooleanValue) {
+            dispatch(clearPersonalField());
+        }
+    }, [toggleBooleanValue])
 
     return (
         <form className={styles.form} onSubmit = {(event) => event.preventDefault()}>

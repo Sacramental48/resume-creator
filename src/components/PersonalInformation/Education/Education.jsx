@@ -2,16 +2,19 @@ import React from 'react'
 import Button from '@/components/UI/Button/Button.jsx'
 import EducationField from './EducationField/EducationField.jsx'
 import styles from './Education.module.css'
-import { useDispatch } from 'react-redux'
-import { addEducationField, deleteEducationField} from '@/store/actions/educationActions.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { addEducationField, deleteEducationField, clearAllEducationFields} from '@/store/actions/educationActions.js'
+import { getBooleanValue } from '@/store/actions/booleanAction.js';
 
 const Education = () => {
     const [educationField, setEducationField] = React.useState([]);
+    const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
 
     const addNewEducationField = () => {
         setEducationField([...educationField, { id: Date.now() }]);
         dispatch(addEducationField());
+        dispatch(getBooleanValue(false));
     }
 
     const deleteCurrentField = (id, index) => {
@@ -19,6 +22,13 @@ const Education = () => {
         setEducationField(updatedFields);
         dispatch(deleteEducationField(index));
     };
+
+    React.useEffect(() => {
+        if(toggleBooleanValue) {
+            setEducationField([]);
+            dispatch(clearAllEducationFields());
+        }
+    }, [toggleBooleanValue])
 
     return (
         <section className={styles.education}>

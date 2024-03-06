@@ -17,6 +17,18 @@ function getPersonalField(state = personalField, action) {
                 firstName: action.payload
             };
         
+        case 'CLEAR_PERSONAL_FIELD':
+            return {
+                firstName: '',
+                lastName: '',
+                title: '',
+                photo: '',
+                address: '',
+                phoneNumber: '',
+                email: '',
+                description: ''
+            };
+
         case 'SET_LAST_NAME':
             return {
                 ...state,

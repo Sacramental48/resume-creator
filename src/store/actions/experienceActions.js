@@ -32,3 +32,7 @@ export const deleteExperienceField = (index) => ({
     type: 'DELETE_EXPERIENCE_FIELD',
     payload: index
 });
+
+export const clearAllExperienceFields = () => ({
+    type: 'DELETE_ALL_EDUCATION_FIELDS'
+});
