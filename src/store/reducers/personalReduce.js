@@ -60,7 +60,4 @@ function getPersonalField(state = personalField, action) {
     }
 };
 
-export const mainFieldReduce = ({
-    personalField,
-    getPersonalField
-});
+export const mainFieldReduce = getPersonalField;

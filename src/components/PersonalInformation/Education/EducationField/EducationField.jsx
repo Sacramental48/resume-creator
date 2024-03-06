@@ -2,24 +2,47 @@ import React from 'react'
 import CustomInput from '@/components/UI/Input/Input.jsx'
 import Button from '@/components/UI/Button/Button.jsx'
 import styles from './EducationField.module.css'
+import { useDispatch } from 'react-redux'
+import { setUniversityName, setCity, setDegree, setSubject, setFrom, setTo } from '@/store/actions/educationActions.js';
 
-const EducatioField = ({...props}) => {
-    const [universityName, setUniversityName] = React.useState('');
-    const [city, setCity] = React.useState('');
-    const [degree, setDegree] = React.useState('');
-    const [subject, setSubject] = React.useState('');
-    const [from, setFrom] = React.useState('');
-    const [to, setTo] = React.useState('');
+const EducatioField = ({deleteField, index}) => {
+    const dispatch = useDispatch();
+
+    function getEducationValue(e) {
+        const { name, value } = e.target;
+        switch (name) {
+            case 'universityName':
+                dispatch(setUniversityName(value, index));
+                break;
+            case 'city':
+                dispatch(setCity(value, index));
+                break;
+            case 'degree':
+                dispatch(setDegree(value, index));
+                break;
+            case 'subject':
+                dispatch(setSubject(value, index));
+                break;
+            case 'from':
+                dispatch(setFrom(value, index));
+                break;
+            case 'to':
+                dispatch(setTo(value, index));
+                break;
+            default:
+                break;
+        }
+    }
 
     return (
         <section className={styles.educationField}>
-            <CustomInput type="text" value={universityName} onChange={e => setUniversityName(e.target.value)} placeholder="Position" />
-            <CustomInput type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="City" />
-            <CustomInput type="text" value={degree} onChange={e => setDegree(e.target.value)} placeholder="Company" />
-            <CustomInput type="text" value={subject} onChange={e => setSubject(e.target.value)} placeholder="Company" />
-            <CustomInput type="text" value={from} onChange={e => setFrom(e.target.value)} placeholder="From (year)" />
-            <CustomInput type="text" value={to} onChange={e => setTo(e.target.value)} placeholder="To (year)" />
-            <Button text="Delete" color="delete" onClick={() => props.onDelete(props.id)}></Button>
+            <CustomInput type="text" name="universityName" onChange={getEducationValue} placeholder="Position" />
+            <CustomInput type="text" name="city" onChange={getEducationValue} placeholder="City" />
+            <CustomInput type="text" name="degree" onChange={getEducationValue} placeholder="Degree" />
+            <CustomInput type="text" name="subject" onChange={getEducationValue} placeholder="Subject" />
+            <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" />
+            <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" />
+            <Button text="Delete" color="delete" onClick={deleteField}></Button>
         </section>
     )
 }

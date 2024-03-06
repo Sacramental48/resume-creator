@@ -30,12 +30,12 @@
     flex-direction: column;
 }
 
-.experienceBody {
+.body {
     display: flex;
     gap: 30px
 }
 
-.experienceDescription {
+.description {
     display: flex;
     flex-direction: column;
     gap: 10px;

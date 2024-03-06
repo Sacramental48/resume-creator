@@ -59,7 +59,4 @@ function getExperienceStateField(state = experienceStateField, action) {
     }
 };
 
-export const experienceReduce = ({
-    experienceStateField,
-    getExperienceStateField
-});
+export const experienceReduce = getExperienceStateField;
