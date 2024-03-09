@@ -4,6 +4,21 @@
     background-color: #ededed;
 }
 
-.title {
-    margin-bottom: 10px;
+.childFields {
+    display: flex;
+    gap: 10px;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 475px) {
+    .aboutPerson input {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50%);
+    }
 }

@@ -34,17 +34,22 @@ const EducatioField = ({deleteField, index}) => {
         }
     }
 
-    return (
-        <section className={styles.educationField}>
-            <CustomInput type="text" name="universityName" onChange={getEducationValue} placeholder="Position" />
-            <CustomInput type="text" name="city" onChange={getEducationValue} placeholder="City" />
-            <CustomInput type="text" name="degree" onChange={getEducationValue} placeholder="Degree" />
-            <CustomInput type="text" name="subject" onChange={getEducationValue} placeholder="Subject" />
-            <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" />
-            <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" />
-            <Button text="Delete" color="delete" onClick={deleteField}></Button>
-        </section>
-    )
+    return ( 
+        <section className={styles.educationField}> 
+          <div className='inputAdaptiveFieldsBlock'> 
+            <CustomInput type="text" name="universityName" onChange={getEducationValue} placeholder="Position" /> 
+            <CustomInput type="text" name="city" onChange={getEducationValue} placeholder="City" /> 
+            <CustomInput type="text" name="degree" onChange={getEducationValue} placeholder="Degree" /> 
+            <CustomInput type="text" name="subject" onChange={getEducationValue} placeholder="Subject" /> 
+          </div> 
+          <div className='inputAdaptiveFieldsBlock'> 
+            <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" /> 
+            <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
+          </div> 
+          <Button className={styles.deleteButton} text="Delete" color="delete" onClick={deleteField}>Add</Button> 
+        </section> 
+      )
+      
 }
 
 export default EducatioField;

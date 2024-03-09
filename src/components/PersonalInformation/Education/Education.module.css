@@ -1,7 +1,12 @@
 .education {
+    width: 50%;
     margin-bottom: 30px;
 }
 
 .educationTitle {
     margin-bottom: 10px;
 }
+
+/* .education button {
+    margin-left: auto;
+} */

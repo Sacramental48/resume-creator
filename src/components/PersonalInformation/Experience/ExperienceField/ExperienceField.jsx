@@ -33,11 +33,15 @@ const ExperienceField = ({ deleteField, index }) => {
 
     return (
         <section className={styles.experienceField}>
-            <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
-            <CustomInput type="text" name="company" onChange={getInputValue} placeholder="Company" />
-            <CustomInput type="text" name="city" onChange={getInputValue} placeholder="City" />
-            <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
-            <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
+                <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
+            <div className={styles.groupAdaptiveInputs}>
+                <CustomInput type="text" name="company" onChange={getInputValue} placeholder="Company" />
+                <CustomInput type="text" name="city" onChange={getInputValue} placeholder="City" />
+            </div>
+            <div className='inputAdaptiveFieldsBlock'>
+                <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
+                <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
+            </div>
             <Button text="Delete" color="delete" onClick={deleteField}></Button>
         </section>
     )

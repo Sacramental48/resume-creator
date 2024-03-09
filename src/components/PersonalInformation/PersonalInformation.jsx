@@ -55,19 +55,25 @@ const PersonalInformation = () => {
 
     return (
         <form className={styles.form} onSubmit = {(event) => event.preventDefault()}>
-            <section className={styles.fieldInfo}>
+            <section className={styles.inputField}>
                 <h2 className={styles.title}>Personal Information</h2>
-                <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="First name" />
-                <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Last name" />
-                <CustomInput type="text" name="title" value={inputDataMainField.title} onChange={getInputValue} placeholder="Title" />
-                <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Your photo" />
-                <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
-                <CustomInput type="tel" name="phoneNumber" value={inputDataMainField.phoneNumber} onChange={getInputValue} placeholder="Phone number" />
-                <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
-                <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="Description" />
+                <div className="inputAdaptiveFieldsBlock">
+                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="First name" />
+                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Last name" />
+                    <CustomInput type="text" name="title" value={inputDataMainField.title} onChange={getInputValue} placeholder="Title" />
+                    <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
+                </div>
+                <div className="inputAdaptiveFieldsBlock">
+                    <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
+                    <CustomInput type="tel" name="phoneNumber" value={inputDataMainField.phoneNumber} onChange={getInputValue} placeholder="Phone number" />
+                    <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
+                    <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="Description" />
+                </div>
             </section>
-            <Experience />
-            <Education />
+            <section className={styles.childFields}>
+                <Experience />
+                <Education />
+            </section>
             <Group />
         </form>
     )
