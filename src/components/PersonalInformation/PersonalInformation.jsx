@@ -56,7 +56,10 @@ const PersonalInformation = () => {
     return (
         <form className={styles.form} onSubmit = {(event) => event.preventDefault()}>
             <section className={styles.inputField}>
-                <h2 className={styles.title}>Personal Information</h2>
+                <div className={styles.header}>
+                    <h2 className={styles.title}>Personal Information</h2>
+                    <Group />
+                </div>
                 <div className="inputAdaptiveFieldsBlock">
                     <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="First name" />
                     <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Last name" />
@@ -74,7 +77,6 @@ const PersonalInformation = () => {
                 <Experience />
                 <Education />
             </section>
-            <Group />
         </form>
     )
 }

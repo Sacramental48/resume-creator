@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .deleteButton {
     display: none;
 }
 
-/* .educationField button {
+.educationField button {
     margin-left: auto;
-} */
+}

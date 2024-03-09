@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '@/components/UI/Button/Button.jsx'
 import ExperienceField from './ExperienceField/ExperienceField.jsx'
 import styles from './Experience.module.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -37,7 +36,7 @@ const Experience = () => {
                 <ExperienceField key={field.id} index={index} deleteField={() => deleteCurrentField(field.id, index)}/>
                 
             ))}
-            <Button text='Add' color="active" type="button" onClick={addNewExperienceField}></Button>
+            <button className='button active' type="button" onClick={addNewExperienceField}>Add</button>
         </section>
     )
 }

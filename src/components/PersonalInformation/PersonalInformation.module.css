@@ -4,11 +4,6 @@
     background-color: #ededed;
 }
 
-.childFields {
-    display: flex;
-    gap: 10px;
-}
-
 .inputField {
     display: flex;
     flex-direction: column;
@@ -16,9 +11,24 @@
     margin-bottom: 20px;
 }
 
-@media screen and (min-width: 475px) {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.childFields {
+    display: flex;
+    gap: 10px;
+}
+
+@media screen and (max-width: 475px) {
     .aboutPerson input {
         flex: 1 1 calc(50% - 10px);
         max-width: calc(50%);
+    }
+
+    .childFields {
+        flex-direction: column;
     }
 }

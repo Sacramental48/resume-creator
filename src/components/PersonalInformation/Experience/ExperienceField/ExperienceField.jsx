@@ -1,6 +1,5 @@
 import React from 'react'
 import CustomInput from '@/components/UI/Input/Input.jsx'
-import Button from '@/components/UI/Button/Button.jsx'
 import styles from './ExperienceField.module.css'
 import { useDispatch } from 'react-redux'
 import { setPosition, setCompany, setCity, setFrom, setTo } from '@/store/actions/experienceActions.js';
@@ -42,7 +41,7 @@ const ExperienceField = ({ deleteField, index }) => {
                 <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
                 <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
             </div>
-            <Button text="Delete" color="delete" onClick={deleteField}></Button>
+            <button className="button delete" onClick={deleteField}>Delete</button>
         </section>
     )
 }

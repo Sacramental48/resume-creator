@@ -1,8 +1,6 @@
 import React from 'react'
 import styles from './Group.module.css'
-import Button from '@/components/UI/Button/Button.jsx'
 import { useDispatch } from 'react-redux'
-// import { deleteAllEducationFields } from '@/store/actions/personalActions.js';
 import { getBooleanValue } from '@/store/actions/booleanAction.js';
 
 const Group = () => {
@@ -13,8 +11,8 @@ const Group = () => {
     };
     return (
         <section className={styles.group}>
-            <Button text='Remove' color="reset" className={styles.groupReset} onClick={removeInputsAndFields} />
-            <Button text='PDF' color="pdf" className={styles.groupPdf} />
+            <button className='button reset' onClick={removeInputsAndFields}>Remove</button>
+            <button className='button pdf'>PDF</button>
         </section>
     )
 }

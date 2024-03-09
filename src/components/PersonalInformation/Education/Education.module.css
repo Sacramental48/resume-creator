@@ -1,12 +1,13 @@
 .education {
     width: 50%;
-    margin-bottom: 30px;
 }
 
 .educationTitle {
     margin-bottom: 10px;
 }
 
-/* .education button {
-    margin-left: auto;
-} */
+@media screen and (max-width: 475px) {
+    .education {
+        width: 100%;
+    }
+}

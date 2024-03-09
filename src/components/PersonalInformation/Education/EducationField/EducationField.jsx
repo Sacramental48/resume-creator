@@ -1,6 +1,5 @@
 import React from 'react'
 import CustomInput from '@/components/UI/Input/Input.jsx'
-import Button from '@/components/UI/Button/Button.jsx'
 import styles from './EducationField.module.css'
 import { useDispatch } from 'react-redux'
 import { setUniversityName, setCity, setDegree, setSubject, setFrom, setTo } from '@/store/actions/educationActions.js';
@@ -46,7 +45,7 @@ const EducatioField = ({deleteField, index}) => {
             <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" /> 
             <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
           </div> 
-          <Button className={styles.deleteButton} text="Delete" color="delete" onClick={deleteField}>Add</Button> 
+          <button className='button delete' onClick={deleteField}>Delete</button> 
         </section> 
       )
       
