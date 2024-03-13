@@ -1,14 +1,11 @@
-.form {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #ededed;
-}
-
 .inputField {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ededed;
 }
 
 .header {
