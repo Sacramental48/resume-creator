@@ -1,15 +1,48 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styles from './TitleResumeMain.module.css';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-const TitleResumeMain = () => {
-    const inputPersonalDataField = useSelector(state => state.personalField);
-    const experienceFields = useSelector(state => state.experienceStateField);
-    const educationFields = useSelector(state => state.educationStateField);
+const TitleResumeMain = ({inputPersonalDataField, experienceFields, educationFields, inputDataField}) => {
+    // const inputPersonalDataField = useSelector(state => state.personalField);
+    // const experienceFields = useSelector(state => state.experienceStateField);
+    // const educationFields = useSelector(state => state.educationStateField);
+    // const inputDataField = useSelector(state => state.personalField);
+    console.log(inputDataField);
+    const styles = StyleSheet.create({
+            page: {
+                height: '1000px',
+                width: '20px'
+            },
+            view: {
+                flexDirection: 'row',
+                backgroundColor: '#1d3746',
+                color: '#fff',
+                height: '120px',
+            },
+            section: {
+                margin: 10,
+                padding: 10,
+                flexGrow: 1
+            }
+        });
 
-    return (
-        <div className={styles.info}>
-            <section className={styles.section}>
+    // return (
+        return (
+            <Document>
+                <Page size="A4" style={styles.page}>
+                    <View style={styles.view}>
+                        <Text>{`${inputDataField.firstName || 'Name'} ${inputDataField.lastName || 'Last Name'}`}</Text>
+                    </View>
+                </Page>
+            </Document>
+        )
+
+        // <div className={styles.header}>
+        //     <span className={styles.headerName}>{`${inputDataField.firstName || 'Name'} ${inputDataField.lastName || 'Last Name'}`}</span>
+        //     <p className={styles.headerTitle}>{inputDataField.title || 'Title'}</p>
+        // </div>
+        // <div className={styles.info}>
+            {/* <section className={styles.section}>
                 <>
                     <span className={styles.title}>Description</span>
                     <p>{inputPersonalDataField.description || '-'}</p>
@@ -64,8 +97,8 @@ const TitleResumeMain = () => {
                     </address>
                 </div>
             </aside>
-        </div>
-    );
+        </div> */}
+    // );
 };
 
 export default TitleResumeMain;
