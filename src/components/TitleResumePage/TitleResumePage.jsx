@@ -3,15 +3,12 @@ import Montserrat from '/Fonts/Montserrat-VariableFont_wght.ttf'
 import { Page, Text, View, Document, Image, Font, StyleSheet } from '@react-pdf/renderer';
 
 const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataField}) => {
-    console.log(inputPersonalDataField);
     const styles = StyleSheet.create({
         header: {
             display: 'flex',
             flexDirection: 'column',
-            // gap: 20,
             width: '100%',
-            padding: '40px 0',
-            color: '#000',
+            padding: '40px 0 16px 0',
         },
         info: {
             display: 'flex',
@@ -27,11 +24,10 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
         description: {
             display: 'flex',
             flexDirection: 'column',
-            gap: 10,
         },
         body: {
             display: 'flex',
-            gap: 30,
+            marginLeft: 10
         },
         aside: {
             display: 'flex',
@@ -46,11 +42,18 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
             margin: '0 auto',
             marginBottom: 12,
         },
+        education: {
+            marginBottom: 10
+        },
         title: {
             color: '#1d3746',
+            fontSize: 20,
             paddingBottom: 6,
             marginBottom: 10,
             borderBottom: '0.6px solid gray'
+        },
+        text: {
+            color: '#1d3746'
         }
     });
 
@@ -65,31 +68,29 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                 <View style={styles.info}>
                     <View style={styles.section}>
                         <View style={styles.header}>
-                            <Text style={{fontSize: 46}}>{`${inputDataField.firstName || 'Name'}`}</Text>
-                            <Text style={{fontSize: 30}}>{`${inputDataField.lastName || 'Last Name'}`}</Text>
-                            <Text style={{fontSize: 16}}>{inputDataField.title || 'Title'}</Text>
+                            <Text style={[styles.text, {fontSize: 46, fontWeight: 800}]}>{`${inputDataField.firstName || 'Name'}`}</Text>
+                            <Text style={[styles.text, {fontSize: 30}]}>{`${inputDataField.lastName || 'Last Name'}`}</Text>
+                            <Text style={[styles.text, {fontSize: 16}]}>{inputDataField.title || 'Position'}</Text>
                         </View>
                         <View style={{marginBottom: 10}}>
                             <Text style={styles.title}>About Me</Text>
-                            <Text>{inputPersonalDataField.description || '-'}</Text>
+                            <Text style={styles.text}>{inputPersonalDataField.description || '-'}</Text>
                         </View>
                         <View style={{marginBottom: 10}}>
                             <Text style={styles.title}>Experience</Text>
                             {experienceFields.length !== 0 ? (
                                 experienceFields.map((experience, index) => (
                                     <View key={index} style={styles.body}>
-                                        <Text>{experience.from} - {experience.to}</Text>
+                                        <Text style={[styles.text, {fontSize: 12, marginBottom: 6}]}>{experience.from} - {experience.to}</Text>
                                         <View style={styles.description}>
-                                            <Text>{experience.position}</Text>
-                                            <View style={{display: 'flex', flexDirection: 'row'}}>
-                                                <Text style={{paddingRight: 10, borderRight: '1px solid black'}}>{experience.company}</Text>
-                                                <Text style={{paddingLeft: 10}}>{experience.city}</Text>
-                                            </View>
+                                            <Text style={[styles.text, {fontSize: 16}]}>{experience.position}</Text>
+                                            <Text style={[styles.text, {fontSize: 16, marginBottom: 6}]}>{experience.company}</Text>
+                                            <Text style={[styles.text, {fontSize: 12}]}>{experience.accomplishments}</Text>
                                         </View>
                                     </View>
                                 ))
                             ) : (
-                                <Text>-</Text>
+                                <Text style={styles.text}>-</Text>
                             )}
                         </View>
                         <View>
@@ -100,22 +101,22 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                         <Image src={inputPersonalDataField.photo || '/img/default-avatar.png'} alt={inputPersonalDataField.photo} style={styles.image} />
                         <View>
                             <Text style={styles.title}>Contact</Text>
-                            <Text style={{marginBottom: 10}}>{inputPersonalDataField.phoneNumber || '-'}</Text>
-                            <Text style={{marginBottom: 10}}>{inputPersonalDataField.address || '-'}</Text>
-                            <Text style={{marginBottom: 10}}>{inputPersonalDataField.email || '-'}</Text>
+                            <Text style={[styles.text, {marginBottom: 10}]}>{inputPersonalDataField.phoneNumber || '-'}</Text>
+                            <Text style={[styles.text, {marginBottom: 10}]}>{inputPersonalDataField.address || '-'}</Text>
+                            <Text style={[styles.text, {marginBottom: 10}]}>{inputPersonalDataField.email || '-'}</Text>
                         </View>
-                        <View>
+                        <View style={styles.education}>
                             <Text style={styles.title}>Education</Text>
                             {educationFields.length !== 0 ? (
                                 educationFields.map((education, index) => (
                                     <View key={index} style={styles.body}>
-                                        <Text>{education.from} - {education.to}</Text>
                                         <View style={styles.description}>
-                                            <Text>{education.universityName}</Text>
-                                            <Text>{education.city}</Text>
-                                            <Text>{education.degree}</Text>
-                                            <Text>{education.subject}</Text>
+                                            <Text style={styles.text}>{education.universityName}</Text>
+                                            <Text style={styles.text}>{education.city}</Text>
+                                            <Text style={styles.text}>{education.degree}</Text>
+                                            <Text style={styles.text}>{education.subject}</Text>
                                         </View>
+                                        <Text style={[styles.text, {fontSize: 12}]}>{education.from} - {education.to}</Text>
                                     </View>
                                 ))
                             ) : (

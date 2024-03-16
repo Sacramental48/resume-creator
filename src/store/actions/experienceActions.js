@@ -9,11 +9,6 @@ export const setCompany = (company, index) => ({
     payload: {company, index}
 });
 
-export const setCity = (city, index) => ({
-    type: 'SET_EXPERIENCE_CITY',
-    payload: {city, index}
-});
-
 export const setFrom = (from, index) => ({
     type: 'SET_EXPERIENCE_FROM',
     payload: {from, index}
@@ -22,6 +17,11 @@ export const setFrom = (from, index) => ({
 export const setTo = (to, index) => ({
     type: 'SET_EXPERIENCE_TO',
     payload: {to, index}
+});
+
+export const setAccomplishments = (accomplishments, index) => ({
+    type: 'SET_ACCOMPLISHMENTS',
+    payload: {accomplishments, index}
 });
 
 export const addExperienceField = () => ({

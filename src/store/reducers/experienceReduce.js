@@ -18,14 +18,14 @@ function getExperienceStateField(state = experienceStateField, action) {
         case 'SET_EXPERIENCE_COMPANY':
             return state.map((item, idx) => idx === index ? { ...item, company: action.payload.company } : item);
 
-        case 'SET_EXPERIENCE_CITY':
-            return state.map((item, idx) => idx === index ? { ...item, city: action.payload.city } : item);
-
         case 'SET_EXPERIENCE_FROM':
             return state.map((item, idx) => idx === index ? { ...item, from: action.payload.from } : item);
 
         case 'SET_EXPERIENCE_TO':
             return state.map((item, idx) => idx === index ? { ...item, to: action.payload.to } : item);
+
+        case 'SET_ACCOMPLISHMENTS':
+            return state.map((item, idx) => idx === index ? { ...item, accomplishments: action.payload.accomplishments } : item);
 
         default: 
             return state;

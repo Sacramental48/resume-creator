@@ -13,7 +13,7 @@ const Main = () => {
     return (
         <main className={styles.main}>
             <PersonalInformation />
-            <PDFViewer style={{height: '1200px'}}>
+            <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
                 <TitleResumePage 
                     inputPersonalDataField={inputPersonalDataField} 
                     experienceFields={experienceFields} 
