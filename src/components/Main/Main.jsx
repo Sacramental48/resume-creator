@@ -6,7 +6,7 @@ import styles from './Main.module.css'
 const Main = () => {
     return (
         <main className={styles.main}>
-            {/* <PersonalInformation /> */}
+            <PersonalInformation />
             <TitleResumePage />
         </main>
     )

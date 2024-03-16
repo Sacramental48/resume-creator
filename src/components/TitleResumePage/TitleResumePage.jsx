@@ -13,7 +13,7 @@ const TitleResumePage = () => {
     return (
         <>
             {/* <TitleResumeHeader /> */}
-            <PDFViewer>
+            <PDFViewer style={{height: '1200px'}}>
                 <TitleResumeMain 
                     inputPersonalDataField={inputPersonalDataField} 
                     experienceFields={experienceFields} 
@@ -25,7 +25,7 @@ const TitleResumePage = () => {
                     experienceFields={experienceFields} 
                     educationFields={educationFields} 
                     inputDataField={inputDataField} />} fileName='FORM'>
-                {({loading, error}) => (loading ? <button>Loading Document</button> : <button>downLoad</button>)}
+                {({loading, error}) => (loading ? <button>Loading Document</button> : <button>Download</button>)}
             </PDFDownloadLink>
         </>
     )

@@ -1,104 +1,145 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import Montserrat from '/Fonts/Montserrat-VariableFont_wght.ttf'
+import { Page, Text, View, Document, Image, Font, StyleSheet } from '@react-pdf/renderer';
 
 const TitleResumeMain = ({inputPersonalDataField, experienceFields, educationFields, inputDataField}) => {
-    // const inputPersonalDataField = useSelector(state => state.personalField);
-    // const experienceFields = useSelector(state => state.experienceStateField);
-    // const educationFields = useSelector(state => state.educationStateField);
-    // const inputDataField = useSelector(state => state.personalField);
-    console.log(inputDataField);
+    console.log(inputPersonalDataField);
     const styles = StyleSheet.create({
-            page: {
-                height: '1000px',
-                width: '20px'
+            header: {
+                display: 'flex',
+                flexDirection: 'column',
+                // gap: 20,
+                width: '100%',
+                padding: '40px 0',
+                color: '#000',
             },
-            view: {
-                flexDirection: 'row',
-                backgroundColor: '#1d3746',
-                color: '#fff',
-                height: '120px',
+            info: {
+                display: 'flex',
+                position: 'relative',
+                flexDirection: 'row-reverse',
+                height: '100%',
             },
             section: {
-                margin: 10,
-                padding: 10,
-                flexGrow: 1
+                gap: 20,
+                width: '70%',
+                padding: '0 20px 0 30px',
+            },
+            description: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+            },
+            body: {
+                display: 'flex',
+                gap: 30,
+            },
+            aside: {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '30%',
+                backgroundColor: '#ececec',
+                padding: '20px 10px 0 10px',
+            },
+            image: {
+                width: '100%',
+                height: 160,
+                margin: '0 auto',
+                marginBottom: 12,
+            },
+            title: {
+                color: '#1d3746',
+                paddingBottom: 6,
+                marginBottom: 10,
+                borderBottom: '0.6px solid gray'
             }
+            
         });
 
-    // return (
+        Font.register({
+            family: 'MontserratAlternates',
+            src: Montserrat
+        })
+        Font.register({ family: 'SourceSansPro', fonts: [
+            { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf' },
+            { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rAkA.ttf', fontWeight: 600 },
+           ]});
+
         return (
-            <Document>
-                <Page size="A4" style={styles.page}>
-                    <View style={styles.view}>
-                        <Text>{`${inputDataField.firstName || 'Name'} ${inputDataField.lastName || 'Last Name'}`}</Text>
+            <Document style={{fontFamily: 'SourceSansPro'}}>
+                <Page size="A4">
+                    <View style={styles.info}>
+                        <View style={styles.section}>
+                            <View style={styles.header}>
+                                <Text style={{fontSize: 46}}>{`${inputDataField.firstName || 'Name'}`}</Text>
+                                <Text style={{fontSize: 30}}>{`${inputDataField.lastName || 'Last Name'}`}</Text>
+                                <Text style={{fontSize: 16}}>{inputDataField.title || 'Title'}</Text>
+                            </View>
+                            <View style={{marginBottom: 10}}>
+                                <Text style={styles.title}>About Me</Text>
+                                <Text>{inputPersonalDataField.description || '-'}</Text>
+                            </View>
+                            <View style={{marginBottom: 10}}>
+                                <Text style={styles.title}>Experience</Text>
+                                {experienceFields.length !== 0 ? (
+                                    experienceFields.map((experience, index) => (
+                                        <View key={index} style={styles.body}>
+                                            <Text>{experience.from} - {experience.to}</Text>
+                                            <View style={styles.description}>
+                                                <Text>{experience.position}</Text>
+                                                <View style={{display: 'flex', flexDirection: 'row'}}>
+                                                    <Text style={{paddingRight: 10, borderRight: '1px solid black'}}>{experience.company}</Text>
+                                                    <Text style={{paddingLeft: 10}}>{experience.city}</Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                    ))
+                                ) : (
+                                    <Text>-</Text>
+                                )}
+                            </View>
+                            <View>
+                            <Text style={styles.title}>Reference</Text>
+                            </View>
+                        </View>
+                        <View style={styles.aside}>
+                            <Image src={inputPersonalDataField.photo || '/img/default-avatar.png'} alt={inputPersonalDataField.photo} style={styles.image} />
+                            <View>
+                                <Text style={styles.title}>Contact</Text>
+                                <Text style={{marginBottom: 10}}>{inputPersonalDataField.phoneNumber || '-'}</Text>
+                                <Text style={{marginBottom: 10}}>{inputPersonalDataField.address || '-'}</Text>
+                                <Text style={{marginBottom: 10}}>{inputPersonalDataField.email || '-'}</Text>
+                            </View>
+                            <View>
+                                <Text style={styles.title}>Education</Text>
+                                {educationFields.length !== 0 ? (
+                                    educationFields.map((education, index) => (
+                                        <View key={index} style={styles.body}>
+                                            <Text>{education.from} - {education.to}</Text>
+                                            <View style={styles.description}>
+                                                <Text>{education.universityName}</Text>
+                                                <Text>{education.city}</Text>
+                                                <Text>{education.degree}</Text>
+                                                <Text>{education.subject}</Text>
+                                            </View>
+                                        </View>
+                                    ))
+                                ) : (
+                                    <Text>-</Text>
+                                )}
+                            </View>
+                            <View>
+                                <Text style={styles.title}>Skills</Text>
+                                <Text>-</Text>
+                            </View>
+                            <View>
+                                <Text style={styles.title}>Language</Text>
+                                <Text>-</Text>
+                            </View>
+                        </View>
                     </View>
                 </Page>
             </Document>
         )
-
-        // <div className={styles.header}>
-        //     <span className={styles.headerName}>{`${inputDataField.firstName || 'Name'} ${inputDataField.lastName || 'Last Name'}`}</span>
-        //     <p className={styles.headerTitle}>{inputDataField.title || 'Title'}</p>
-        // </div>
-        // <div className={styles.info}>
-            {/* <section className={styles.section}>
-                <>
-                    <span className={styles.title}>Description</span>
-                    <p>{inputPersonalDataField.description || '-'}</p>
-                </>
-                <>
-                    <span className={styles.title}>Experience</span>
-                    {experienceFields.length !== 0 ? (
-                        experienceFields.map((experience, index) => (
-                            <div key={index} className={styles.body}>
-                                <span>{experience.from} - {experience.to}</span>
-                                <div className={styles.description}>
-                                    <p>{experience.position}</p>
-                                    <p>{experience.company}</p>
-                                    <p>{experience.city}</p>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <p>-</p>
-                    )}
-                </>
-                <>
-                    <span className={styles.title}>Education</span>
-                    {educationFields.length !== 0 ? (
-                        educationFields.map((education, index) => (
-                            <div key={index} className={styles.body}>
-                                <span>{education.from} - {education.to}</span>
-                                <div className={styles.description}>
-                                    <p>{education.universityName}</p>
-                                    <p>{education.city}</p>
-                                    <p>{education.degree}</p>
-                                    <p>{education.subject}</p>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <p>-</p>
-                    )}
-                </>
-            </section>
-            <aside className={styles.aside}>
-                <img src={inputPersonalDataField.photo || '/img/default-avatar.png'} alt={inputPersonalDataField.photo} />
-                <div className={styles.asideBody}>
-                    <span>Personal Details</span>
-                    <address>
-                        <p>City</p>
-                        <span>{inputPersonalDataField.address || '-'}</span>
-                        <p>Number</p>
-                        <span>{inputPersonalDataField.phoneNumber || '-'}</span>
-                        <p>Email</p>
-                        <span>{inputPersonalDataField.email || '-'}</span>
-                    </address>
-                </div>
-            </aside>
-        </div> */}
-    // );
 };
 
 export default TitleResumeMain;
