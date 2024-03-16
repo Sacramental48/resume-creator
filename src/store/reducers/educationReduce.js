@@ -15,14 +15,8 @@ function getEducationStateField(state = educationStateField, action) {
         case 'SET_EDUCATION_UNIVERSITY_NAME':
             return state.map((item, idx) => idx === index ? { ...item, universityName: action.payload.universityName } : item);
 
-        case 'SET_EDUCATION_CITY':
-            return state.map((item, idx) => idx === index ? { ...item, city: action.payload.city } : item);
-            
-        case 'SET_EDUCATION_DEGREE':
-            return state.map((item, idx) => idx === index ? { ...item, degree: action.payload.degree } : item);
-
-        case 'SET_EDUCATION_SUBJECT':
-            return state.map((item, idx) => idx === index ? { ...item, subject: action.payload.subject } : item);
+        case 'SET_EDUCATION_FACULTY':
+            return state.map((item, idx) => idx === index ? { ...item, faculty: action.payload.faculty } : item);
 
         case 'SET_EDUCATION_FROM':
             return state.map((item, idx) => idx === index ? { ...item, from: action.payload.from } : item);
