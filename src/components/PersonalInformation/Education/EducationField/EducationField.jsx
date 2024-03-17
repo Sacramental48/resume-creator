@@ -13,7 +13,7 @@ const EducatioField = ({deleteField, index}) => {
             case 'universityName':
                 dispatch(setUniversityName(value, index));
                 break;
-            case 'subject':
+            case 'faculty':
                 dispatch(setFaculty(value, index));
                 break;
             case 'from':

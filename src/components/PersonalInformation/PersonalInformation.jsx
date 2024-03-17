@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
+import { setFirstName, setLastName, setPosition, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
 import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
@@ -24,8 +24,8 @@ const PersonalInformation = () => {
             case 'lastName':
                 dispatch(setLastName(value));
                 break;
-            case 'title':
-                dispatch(setTitle(value));
+            case 'position':
+                dispatch(setPosition(value));
                 break;
             case 'photo':
                 dispatch(setPhoto(value));
@@ -61,16 +61,21 @@ const PersonalInformation = () => {
                     <Group />
                 </div>
                 <div className="inputAdaptiveFieldsBlock">
-                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="First name" />
-                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Last name" />
-                    <CustomInput type="text" name="title" value={inputDataMainField.title} onChange={getInputValue} placeholder="Title" />
+                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} autocomplete="given-name" onChange={getInputValue} placeholder="Name" />
+                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} autocomplete="family-name" onChange={getInputValue} placeholder="Surname" />
+                    <CustomInput type="text" name="position" value={inputDataMainField.position} onChange={getInputValue} placeholder="Position" />
                     <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
                 </div>
                 <div className="inputAdaptiveFieldsBlock">
                     <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
                     <CustomInput type="tel" name="phoneNumber" value={inputDataMainField.phoneNumber} onChange={getInputValue} placeholder="Phone number" />
                     <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
-                    <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="Description" />
+                    <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="About yourself" />
+                </div>
+                <div>
+                    <button>+Skills</button>
+                    <button>+language</button>
+                    <button>+reference</button>
                 </div>
             </section>
             <section className={styles.childFields}>
