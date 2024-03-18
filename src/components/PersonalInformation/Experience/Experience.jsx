@@ -33,9 +33,7 @@ const Experience = ({addNewExperienceField, experienceField, setExperienceField}
                     addNewExperienceField={addNewExperienceField} 
                     deleteField={() => deleteCurrentField(field.id, index)}
                 />
-                
             ))}
-            <button className='button active' type="button" onClick={addNewExperienceField}>Add</button>
         </section>
     )
 }

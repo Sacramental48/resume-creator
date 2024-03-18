@@ -2,19 +2,11 @@ import React from 'react'
 import EducationField from './EducationField/EducationField.jsx'
 import styles from './Education.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addEducationField, deleteEducationField, clearAllEducationFields} from '@/store/actions/educationActions.js'
-import { getBooleanValue } from '@/store/actions/booleanAction.js';
+import { deleteEducationField, clearAllEducationFields} from '@/store/actions/educationActions.js'
 
-const Education = () => {
-    const [educationField, setEducationField] = React.useState([]);
+const Education = ({addNewEducationField, educationField, setEducationField}) => {
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
-
-    const addNewEducationField = () => {
-        setEducationField([...educationField, { id: Date.now() }]);
-        dispatch(addEducationField());
-        dispatch(getBooleanValue(false));
-    }
 
     const deleteCurrentField = (id, index) => {
         const updatedFields = educationField.filter(field => field.id !== id);
@@ -33,9 +25,14 @@ const Education = () => {
         <section className={styles.education}>
             <h2 className={styles.educationTitle}>Education</h2>
             {educationField.map((field, index) => (
-                <EducationField key={field.id} index={index} deleteField={() => deleteCurrentField(field.id, index)} />
+                <EducationField 
+                    key={field.id} 
+                    index={index} 
+                    deleteField={() => deleteCurrentField(field.id, index)} 
+                    addNewEducationField={addNewEducationField}
+                    educationField={educationField}
+                    />
             ))}
-            <button className='button active' onClick={addNewEducationField}>Add</button>
         </section>
     )
 }

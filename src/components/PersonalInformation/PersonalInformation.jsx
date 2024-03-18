@@ -11,6 +11,8 @@ import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
     const [experienceField, setExperienceField] = React.useState([]);
+    const [educationField, setEducationField] = React.useState([]);
+
     const inputDataMainField = useSelector(state => state.personalField);
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
@@ -21,6 +23,13 @@ const PersonalInformation = () => {
         dispatch(addExperienceField());
         dispatch(getBooleanValue(false));
     };
+
+
+    const addNewEducationField = () => {
+        setEducationField([...educationField, { id: Date.now() }]);
+        dispatch(addEducationField());
+        dispatch(getBooleanValue(false));
+    }
 
     const getInputValue = (e) => {
         const { name, value } = e.target;
@@ -86,7 +95,8 @@ const PersonalInformation = () => {
                     <button>+language</button>
                     <button>+reference</button>
 
-                    <button className='button active' onClick={addNewExperienceField} >Experience</button>
+                    <button className='button active' onClick={addNewExperienceField}>Experience</button>
+                    <button className='button active' onClick={addNewEducationField}>Education</button>
                 </div>
             </section>
             <section className={styles.childFields}>
@@ -97,7 +107,14 @@ const PersonalInformation = () => {
                         setExperienceField={setExperienceField} 
                     />
                 )}
-                <Education />
+                {educationField.length !== 0 && (
+                    <Education 
+                        addNewEducationField={addNewEducationField}
+                        educationField={educationField}
+                        setEducationField={setEducationField}
+                    />
+                )}
+                
             </section>
         </form>
     )

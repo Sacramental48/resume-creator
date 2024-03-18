@@ -4,7 +4,7 @@ import styles from './EducationField.module.css'
 import { useDispatch } from 'react-redux'
 import { setUniversityName, setFaculty, setFrom, setTo } from '@/store/actions/educationActions.js';
 
-const EducatioField = ({deleteField, index}) => {
+const EducatioField = ({addNewEducationField, educationField, deleteField, index}) => {
     const dispatch = useDispatch();
 
     function getEducationValue(e) {
@@ -38,6 +38,9 @@ const EducatioField = ({deleteField, index}) => {
             <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
           </div> 
           <button className='button delete' onClick={deleteField}>Delete</button> 
+          {index === educationField.length - 1 && (
+            <button className='button active' onClick={addNewEducationField}>Add</button>
+          )}
         </section> 
       )
       
