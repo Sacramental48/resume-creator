@@ -76,6 +76,8 @@ const PersonalInformation = () => {
                     <button>+Skills</button>
                     <button>+language</button>
                     <button>+reference</button>
+
+                    <button className='button active' >+Experience</button>
                 </div>
             </section>
             <section className={styles.childFields}>

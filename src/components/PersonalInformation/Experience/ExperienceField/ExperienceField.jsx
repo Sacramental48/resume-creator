@@ -4,7 +4,7 @@ import styles from './ExperienceField.module.css'
 import { useDispatch } from 'react-redux'
 import { setPosition, setCompany, setFrom, setTo, setAccomplishments } from '@/store/actions/experienceActions.js';
 
-const ExperienceField = ({ deleteField, index }) => {
+const ExperienceField = ({ deleteField, experienceField, addNewExperienceField, index }) => {
     const dispatch = useDispatch();
 
     const getInputValue = (e) => {
@@ -40,6 +40,7 @@ const ExperienceField = ({ deleteField, index }) => {
             </div>
             <textarea className={styles.textArea} type="text" name="accomplishments" onChange={getInputValue} placeholder="Accomplishments" />
             <button className="button delete" onClick={deleteField}>Delete</button>
+            {index === experienceField.length - 1 && <button className='button active' onClick={addNewExperienceField}>Add</button>}
         </section>
     )
 }
