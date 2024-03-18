@@ -2,20 +2,12 @@ import React from 'react'
 import ExperienceField from './ExperienceField/ExperienceField.jsx'
 import styles from './Experience.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addExperienceField, deleteExperienceField, removeAllExperienceFields } from '@/store/actions/experienceActions.js'
-import { getBooleanValue } from '@/store/actions/booleanAction.js';
+import { deleteExperienceField, removeAllExperienceFields } from '@/store/actions/experienceActions.js'
 
-const Experience = () => {
+const Experience = ({addNewExperienceField, experienceField, setExperienceField}) => {
     const dispatch = useDispatch();
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue);
-    const [experienceField, setExperienceField] = React.useState([]);
-
-    const addNewExperienceField = () => {
-        const newField = { id: Date.now() };
-        setExperienceField([...experienceField, newField]);
-        dispatch(addExperienceField());
-        dispatch(getBooleanValue(false));
-    };
+    
 
     const deleteCurrentField = (id, index) => {
         const updatedFields = experienceField.filter(field => field.id !== id);

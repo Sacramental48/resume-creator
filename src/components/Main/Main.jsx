@@ -13,7 +13,7 @@ const Main = () => {
     return (
         <main className={styles.main}>
             <PersonalInformation />
-            <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
+            {/* <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
                 <TitleResumePage 
                     inputPersonalDataField={inputPersonalDataField} 
                     experienceFields={experienceFields} 
@@ -26,7 +26,7 @@ const Main = () => {
                     educationFields={educationFields} 
                     inputDataField={inputDataField} />} fileName='FORM'>
                 {({loading, error}) => (loading ? <button>Loading Document</button> : <button>Download</button>)}
-            </PDFDownloadLink>
+            </PDFDownloadLink> */}
         </main>
     )
 }

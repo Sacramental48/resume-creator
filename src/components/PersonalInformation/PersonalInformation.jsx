@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFirstName, setLastName, setPosition, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
+import { addExperienceField } from '@/store/actions/experienceActions.js'
 import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
@@ -9,9 +10,17 @@ import Group from './Group/Group.jsx'
 import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
+    const [experienceField, setExperienceField] = React.useState([]);
     const inputDataMainField = useSelector(state => state.personalField);
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
+
+    const addNewExperienceField = () => {
+        const newField = { id: Date.now() };
+        setExperienceField([...experienceField, newField]);
+        dispatch(addExperienceField());
+        dispatch(getBooleanValue(false));
+    };
 
     const getInputValue = (e) => {
         const { name, value } = e.target;
@@ -77,11 +86,17 @@ const PersonalInformation = () => {
                     <button>+language</button>
                     <button>+reference</button>
 
-                    <button className='button active' >+Experience</button>
+                    <button className='button active' onClick={addNewExperienceField} >Experience</button>
                 </div>
             </section>
             <section className={styles.childFields}>
-                <Experience />
+                {experienceField.length !== 0 && (
+                    <Experience 
+                        addNewExperienceField={addNewExperienceField} 
+                        experienceField={experienceField} 
+                        setExperienceField={setExperienceField} 
+                    />
+                )}
                 <Education />
             </section>
         </form>
