@@ -5,6 +5,7 @@ import { addExperienceField } from '@/store/actions/experienceActions.js'
 import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
+import Skills from './Skills/SkillsField.jsx'
 import CustomInput from '@/components/UI/Input/Input.jsx'
 import Group from './Group/Group.jsx'
 import styles from './PersonalInformation.module.css'
@@ -79,8 +80,8 @@ const PersonalInformation = () => {
                     <Group />
                 </div>
                 <div className="inputAdaptiveFieldsBlock">
-                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} autocomplete="given-name" onChange={getInputValue} placeholder="Name" />
-                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} autocomplete="family-name" onChange={getInputValue} placeholder="Surname" />
+                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="Name" />
+                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Surname" />
                     <CustomInput type="text" name="position" value={inputDataMainField.position} onChange={getInputValue} placeholder="Position" />
                     <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
                 </div>
@@ -91,7 +92,6 @@ const PersonalInformation = () => {
                     <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="About yourself" />
                 </div>
                 <div>
-                    <button>+Skills</button>
                     <button>+language</button>
                     <button>+reference</button>
 
@@ -100,6 +100,7 @@ const PersonalInformation = () => {
                 </div>
             </section>
             <section className={styles.childFields}>
+                <Skills />
                 {experienceField.length !== 0 && (
                     <Experience 
                         addNewExperienceField={addNewExperienceField} 

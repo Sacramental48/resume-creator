@@ -1,9 +1,9 @@
 import React from 'react'
-import { Phone, Email, Web, Location } from '@/components/svg/icons.jsx'
+import { Phone, Email, Location } from '@/components/svg/icons.jsx'
 import {styles}  from './styles.js';
-import { Page, Text, View, Document, Image, Font, Svg, Path } from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
 
-const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataField}) => {
+const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataFields, skillFields}) => {
     Font.register({ family: 'SourceSansPro', fonts: [
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf' },
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rAkA.ttf', fontWeight: 600 },
@@ -29,9 +29,9 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                 <View style={styles.info}>
                     <View style={styles.section}>
                         <View style={styles.header}>
-                            <Text style={[styles.text, {fontSize: 46, fontWeight: 800, marginBottom: -10}]}>{`${inputDataField.firstName || 'Name'}`}</Text>
-                            <Text style={[styles.text, {fontSize: 30}]}>{`${inputDataField.lastName || 'Surname'}`}</Text>
-                            <Text style={[styles.text, {fontSize: 16}]}>{inputDataField.position || 'Position'}</Text>
+                            <Text style={[styles.text, {fontSize: 46, fontWeight: 800, marginBottom: -10}]}>{`${inputDataFields.firstName || 'Name'}`}</Text>
+                            <Text style={[styles.text, {fontSize: 30}]}>{`${inputDataFields.lastName || 'Surname'}`}</Text>
+                            <Text style={[styles.text, {fontSize: 16}]}>{inputDataFields.position || 'Position'}</Text>
                         </View>
                         <View style={{marginBottom: 10}}>
                             <Text style={[styles.title, {paddingLeft: 16}]}>ABOUT ME</Text>
@@ -106,7 +106,13 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                         </View>
                         <View style={{marginBottom: 10}}>
                             <Text style={[styles.title, {textAlign: 'center'}]}>SKILLS</Text>
-                            <Text style={[styles.text, {fontSize: 14}]}>-</Text>
+                            {skillFields.map((skill, index) => (
+                                <View key={index}>
+                                    <Text>{skill.skillName}</Text>
+                                    <Text>{skill.skillLevel}</Text>
+                                </View>
+                            ))}
+                            {/* <Text style={[styles.text, {fontSize: 14}]}>-</Text> */}
                         </View>
                         <View>
                             <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>
