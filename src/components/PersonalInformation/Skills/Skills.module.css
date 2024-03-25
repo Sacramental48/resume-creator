@@ -7,6 +7,9 @@
 }
 
 .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
     cursor: pointer;
 }
@@ -18,6 +21,12 @@
     padding: 20px;
     background-color: #ededed;
     border-bottom-right-radius: 6mm;
+}
+
+.controlsContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .skillField {
@@ -33,4 +42,10 @@
 .skillLevel {
     display: flex;
     flex-direction: row-reverse;
+}
+
+.trash {
+    margin-left: auto;
+    margin-right: 20px;
+    cursor: pointer;
 }

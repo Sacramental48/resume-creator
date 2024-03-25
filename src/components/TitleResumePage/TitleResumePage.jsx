@@ -105,14 +105,24 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                             )}
                         </View>
                         <View style={{marginBottom: 10}}>
-                            <Text style={[styles.title, {textAlign: 'center'}]}>SKILLS</Text>
-                            {skillFields.map((skill, index) => (
-                                <View key={index}>
-                                    <Text>{skill.skillName}</Text>
-                                    <Text>{skill.skillLevel}</Text>
-                                </View>
-                            ))}
-                            {/* <Text style={[styles.text, {fontSize: 14}]}>-</Text> */}
+                            {skillFields.length !== 0 && (
+                                <>
+                                    <Text style={[styles.title, {textAlign: 'center'}]}>SKILLS</Text>
+                                    {skillFields.map((skill, index) => {
+                                        console.log("Skill:", skill);
+                                        return (
+                                            <View style={styles.skills} key={index}>
+                                                <Text style={[styles.text, {fontSize: 12, fontWeight: 800}]}>{skill.skillName}:</Text>
+                                                <View style={{width: '50%', height: 6, border: '0.4px solid black', borderRadius: 24}}>
+                                                    {skill && skill.skillLevel !== undefined && (
+                                                        <Text style={[styles.lineSkill, {width: `${skill.skillLevel}%`}]}></Text>
+                                                    )}
+                                                </View>
+                                            </View>
+                                        )
+                                    })}
+                                </>
+                            )}
                         </View>
                         <View>
                             <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>

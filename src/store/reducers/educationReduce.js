@@ -7,7 +7,7 @@ function getEducationStateField(state = educationStateField, action) {
             return [...state, {}];
 
         case 'DELETE_EDUCATION_FIELD':
-            return state.filter((experience, idx) => idx !== action.payload);
+            return state.filter((experience, idx) => console.log(idx !== action.payload));
 
         case 'DELETE_ALL_EDUCATION_FIELDS':
             return [];

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFirstName, setLastName, setPosition, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
 import { addExperienceField } from '@/store/actions/experienceActions.js'
+import { addEducationField } from '@/store/actions/educationActions.js'
 import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'

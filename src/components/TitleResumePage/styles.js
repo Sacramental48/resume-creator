@@ -56,5 +56,18 @@ export const styles = StyleSheet.create({
     },
     text: {
         color: '#454541'
+    },
+    skills: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        gap: 20,
+        alignItems: 'center'
+    },
+    lineSkill: {
+        content: '',
+        backgroundColor: '#454541',
+        height: '100%',
+        Left: 4
     }
 });

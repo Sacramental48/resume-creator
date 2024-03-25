@@ -10,4 +10,13 @@ export const setSkillLevel = (skillLevel, index) => ({
 
 export const addSkillField = () => ({
     type: 'ADD_SKILL_FIELD'
-})
+});
+
+export const deleteCurrentSkillField = (index) => ({
+    type: 'DELETE_CURRENT_SKILL_FIELD',
+    payload: index
+});
+
+export const deleteAllSkillFields = () => ({
+    type: 'DELETE_ALL_SKILL_FIELDS'
+});
