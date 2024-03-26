@@ -1,9 +1,9 @@
 import React from 'react'
 import CutomInput from '@/components/UI/Input/Input.jsx'
+import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSkillName, setSkillLevel, addSkillField, deleteCurrentSkillField, deleteAllSkillFields } from '@/store/actions/skillsAction'
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
-import { IoIosAddCircleOutline } from "@react-icons/all-files/io/IoIosAddCircleOutline";
 import styles from './Skills.module.css'
 
 const Skills = () => {
@@ -70,14 +70,13 @@ const Skills = () => {
 
     return (
         <section className={styles.section}>
-            {/* DRY!!!! */}
-            <div className={styles.details} onClick={() => skillFieldsValue.length ? setIsOpen(!isOpen) : null}>
-                <h2 className={styles.title}>Skills</h2>
-                <div className={styles.controlsContainer}>
-                    <IoIosAddCircleOutline onClick={addSkill} size={30} />
-                    <FaRegTrashAlt onClick={deleteAllSkills} size={24} />
-                </div>
-            </div>
+            <ControlsAccordion 
+                addFunction={addSkill} 
+                deleteFunction={deleteAllSkills} 
+                arrayValues={skillFieldsValue} 
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+            />
             {isOpen && (
                 <div className={styles.body}>
                     {skillFieldsValue.map((field, index) => (

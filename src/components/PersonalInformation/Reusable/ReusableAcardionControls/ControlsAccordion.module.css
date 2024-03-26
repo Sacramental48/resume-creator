@@ -1,0 +1,13 @@
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.controlsContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
