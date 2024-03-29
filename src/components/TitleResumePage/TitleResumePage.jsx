@@ -3,7 +3,7 @@ import { Phone, Email, Location } from '@/components/svg/icons.jsx'
 import {styles}  from './styles.js';
 import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
 
-const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataFields, skillFields}) => {
+const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataFields, skillFields, languageFields}) => {
     Font.register({ family: 'SourceSansPro', fonts: [
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf' },
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rAkA.ttf', fontWeight: 600 },
@@ -125,8 +125,18 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                             )}
                         </View>
                         <View>
-                            <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>
-                            <Text style={[styles.text, {fontSize: 14}]}>-</Text>
+                            {languageFields.length !== 0 && (
+                                <>
+                                    <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>
+                                    {languageFields.map((lang, index) => {
+                                        return (
+                                            <View key={index}>
+                                                <Text>{languageFields.inputField}: </Text>
+                                            </View>
+                                        )
+                                    })}
+                                </>
+                            )}
                         </View>
                     </View>
                 </View>

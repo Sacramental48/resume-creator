@@ -16,7 +16,7 @@
 
 .childFields {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 475px) {

@@ -11,6 +11,7 @@ const Main = () => {
     const educationFields = useSelector(state => state.educationStateField);
     const inputDataFields = useSelector(state => state.personalField);
     const skillFields = useSelector(state => state.skillsStateField);
+    const languageFields = useSelector(state => state.languageStateField);
 
     return (
         <main className={styles.main}>
@@ -22,6 +23,7 @@ const Main = () => {
                     educationFields={educationFields} 
                     inputDataFields={inputDataFields} 
                     skillFields={skillFields}
+                    languageFields={languageFields}
                 />
             </PDFViewer>
             <PDFDownloadLink 
@@ -32,6 +34,7 @@ const Main = () => {
                         educationFields={educationFields} 
                         inputDataFields={inputDataFields}
                         skillFields={skillFields} 
+                        languageFields={languageFields}
                 />} fileName='FORM'>
                 {({loading, error}) => (loading ? <button>Loading Document</button> : <button>Download</button>)}
             </PDFDownloadLink>

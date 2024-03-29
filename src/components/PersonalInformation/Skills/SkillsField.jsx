@@ -37,9 +37,9 @@ const Skills = () => {
     };
 
     function addSkill(e) {
-        e.stopPropagation()
-        const newField = { id: Date.now() };
-        setSkillFielsValue([...skillFieldsValue, newField]);
+        e.stopPropagation();
+        const id = { id: Date.now() };
+        setSkillFielsValue([...skillFieldsValue, id]);
         dispatch(addSkillField());
         dispatch(setSkillLevel(20, skillFields.length));
         setRangeValue([...rangeValue, 20]);
@@ -47,8 +47,8 @@ const Skills = () => {
     }
 
     function deleteSkill(_, index) {
-        const updatedSkillsField = skillFieldsValue.filter((_, idx) => idx !== index);
-        setSkillFielsValue(updatedSkillsField);
+        const updatedSkillFields = skillFieldsValue.filter((_, idx) => idx !== index);
+        setSkillFielsValue(updatedSkillFields);
         dispatch(deleteCurrentSkillField(index));
         setRangeValue(values => {
             const currentValue = [...values];
@@ -69,50 +69,48 @@ const Skills = () => {
     }, [skillFieldsValue])
 
     return (
-        <section className={styles.section}>
-            <ControlsAccordion 
-                addFunction={addSkill} 
-                deleteFunction={deleteAllSkills} 
-                arrayValues={skillFieldsValue} 
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-            {isOpen && (
-                <div className={styles.body}>
-                    {skillFieldsValue.map((field, index) => (
-                        <div key={field.id} className={styles.skillField}>
-                            <>
-                                <CutomInput
-                                    className={styles.skillName}
-                                    type="text"
-                                    name="skills"
-                                    maxLength="14"
-                                    value={skillFields.skillName}
-                                    placeholder="Skill Name"
-                                    onChange={getInputValue}
-                                    data-index={index}
-                                />
-                                <div className={styles.skillLevel}>
-                                    <span>{rangeValue[index]}/100</span>
-                                    <CutomInput
-                                        className={styles.level}
-                                        type={'range'}
-                                        name="level"
-                                        defaultValue={20}
-                                        step={10}
-                                        min="0"
-                                        max="100"
-                                        onChange={getInputValue}
-                                        data-index={index}
-                                    />
-                                </div>
-                            </>
-                            <FaRegTrashAlt className={styles.trash} size={18} onClick={() => deleteSkill(field.id, index)} />
+        <ControlsAccordion 
+            name={'Skills'}
+            addFunction={addSkill}
+            deleteFunction={deleteAllSkills}
+            arrayValues={skillFieldsValue}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+        >
+        {isOpen && (
+            <div className={styles.body}>
+                {skillFieldsValue.map((field, index) => (
+                    <div key={field.id} className={styles.skillField}>
+                        <CutomInput
+                            className={styles.skillName}
+                            type="text"
+                            name="skills"
+                            maxLength="14"
+                            value={skillFields.skillName}
+                            placeholder="Skill Name"
+                            onChange={getInputValue}
+                            data-index={index}
+                        />
+                        <div className={styles.skillLevel}>
+                            <span>{rangeValue[index]}/100</span>
+                            <CutomInput
+                                className={styles.level}
+                                type={'range'}
+                                name="level"
+                                defaultValue={20}
+                                step={10}
+                                min="0"
+                                max="100"
+                                onChange={getInputValue}
+                                data-index={index}
+                            />
                         </div>
-                    ))}
-                </div>
-            )}
-        </section>
+                        <FaRegTrashAlt className={styles.trash} size={18} onClick={() => deleteSkill(field.id, index)} />
+                    </div>
+                ))}
+            </div>
+        )}
+        </ControlsAccordion>
     )
 }
 

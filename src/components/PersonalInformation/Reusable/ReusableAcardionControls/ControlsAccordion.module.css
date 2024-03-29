@@ -1,7 +1,15 @@
 .details {
     display: flex;
+    flex-direction: column;
+    background-color: #b3b36d;
+    border-radius: 6mm;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 20px;
     cursor: pointer;
 }

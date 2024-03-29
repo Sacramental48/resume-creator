@@ -7,8 +7,9 @@ import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
 import Skills from './Skills/SkillsField.jsx'
-import CustomInput from '@/components/UI/Input/Input.jsx'
+import LanguageLevel from './LanguageLevel/Language.jsx'
 import Group from './Group/Group.jsx'
+import CustomInput from '@/components/UI/Input/Input.jsx'
 import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
@@ -93,7 +94,6 @@ const PersonalInformation = () => {
                     <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="About yourself" />
                 </div>
                 <div>
-                    <button>+language</button>
                     <button>+reference</button>
 
                     <button className='button active' onClick={addNewExperienceField}>Experience</button>
@@ -102,6 +102,7 @@ const PersonalInformation = () => {
             </section>
             <section className={styles.childFields}>
                 <Skills />
+                <LanguageLevel />
                 {experienceField.length !== 0 && (
                     <Experience 
                         addNewExperienceField={addNewExperienceField} 
