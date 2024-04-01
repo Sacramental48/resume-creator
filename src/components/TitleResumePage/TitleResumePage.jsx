@@ -109,7 +109,6 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                                 <>
                                     <Text style={[styles.title, {textAlign: 'center'}]}>SKILLS</Text>
                                     {skillFields.map((skill, index) => {
-                                        console.log("Skill:", skill);
                                         return (
                                             <View style={styles.skills} key={index}>
                                                 <Text style={[styles.text, {fontSize: 12, fontWeight: 800}]}>{skill.skillName}:</Text>

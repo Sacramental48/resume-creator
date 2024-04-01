@@ -2,8 +2,7 @@ const languageStateField = [];
 
 function getLanguageStateFields(state = languageStateField, action) {
     const index = action.payload?.index;
-    console.log(action);
-    console.log(state);
+    
     switch(action.type) {
         case 'ADD_LANGUAGE_FIELD':
             return [...state, {}];
