@@ -11,36 +11,44 @@ const LanguageLevel = () => {
     const [isOpenLanguage, setIsOpenLanguage] = React.useState(false);
 
     const dispatch = useDispatch();
-    
+
     const getInputValue = (e) => {
-        const {name, value} = e.target;
+        const { value } = e.target;
         const index = Number(e.target.dataset.index);
-        switch(value&& name) {
+
+        dispatch(setInputField(value, index));
+    }
+    
+    const getRadioValue = (e) => {
+        const { value } = e.target;
+        const index = Number(e.target.dataset.index);
+
+        switch(value) {
             case `inputField-${index}`: 
                 dispatch(setInputField(value, index));
                 break;
 
-            case 'A1':
-                dispatch(setBeginner(value, index ));
+            case 'Beginner(A1)':
+                dispatch(setBeginner(value, index));
                 break;
 
-            case 'A2':
+            case 'Elementary(A2)':
                 dispatch(setElementary(value, index));
                 break;
 
-            case 'B1':
+            case 'Intermediate(B1)':
                 dispatch(setIntermediate(value, index));
                 break;
 
-            case 'B2':
+            case 'Upper-intermediate(B2)':
                 dispatch(setUpperIntermediate(value, index));
                 break;
 
-            case 'C1':
+            case 'Advanced(C1)':
                 dispatch(setAdvanced(value, index));
                 break;
 
-            case 'C2':
+            case 'Mastery(C2)':
                 dispatch(setMastery(value, index));
                 break;
 
@@ -94,31 +102,31 @@ const LanguageLevel = () => {
                             <div className={styles.fieldset}>
                                 <div className={styles.option}>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`a1-${index}`} name={`level-${index}`} value="A1" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`a1-${index}`} name={`level-${index}`} value="Beginner(A1)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`a1-${index}`} className={styles.label}>A1 (Beginner)</label>
                                     </div>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`a2-${index}`} name={`level-${index}`} value="A2" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`a2-${index}`} name={`level-${index}`} value="Elementary(A2)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`a2-${index}`} className={styles.label}>A2 (Elementary)</label>
                                     </div>
                                 </div>
                                 <div className={styles.option}>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`b1-${index}`} name={`level-${index}`} value="B1" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`b1-${index}`} name={`level-${index}`} value="Intermediate(B1)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`b1-${index}`} className={styles.label}>B1 (Intermediate)</label>
                                     </div>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`b2-${index}`} name={`level-${index}`} value="B2" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`b2-${index}`} name={`level-${index}`} value="Upper-intermediate(B2)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`b2-${index}`} className={styles.label}>B2 (Upper-intermediate)</label>
                                     </div>
                                 </div>
                                 <div className={styles.option}>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`c1-${index}`} name={`level-${index}`} value="C1" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`c1-${index}`} name={`level-${index}`} value="Advanced(C1)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`c1-${index}`} className={styles.label}>C1 (Advanced)</label>
                                     </div>
                                     <div className={styles.optionItem}>
-                                        <CustmInput type="radio" id={`c2-${index}`} name={`level-${index}`} value="C2" data-index={index} onChange={getInputValue} />
+                                        <CustmInput type="radio" id={`c2-${index}`} name={`level-${index}`} value="Mastery(C2)" data-index={index} onChange={getRadioValue} />
                                         <label htmlFor={`c2-${index}`} className={styles.label}>C2 (Mastery)</label>
                                     </div>
                                 </div>

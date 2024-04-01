@@ -21,7 +21,7 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                 fontWeight: 400,
             },
         ]
-    })
+    });
 
     return (
         <Document>
@@ -130,8 +130,13 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                                     <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>
                                     {languageFields.map((lang, index) => {
                                         return (
-                                            <View key={index}>
-                                                <Text>{languageFields.inputField}: </Text>
+                                            <View key={index} style={styles.lang}>
+                                                {lang.inputField && (
+                                                    <>
+                                                        <Text style={[styles.text, {fontSize: 12}]}>{lang.inputField}: </Text>
+                                                        <Text style={[styles.text, {fontSize: 12}]}>{lang.level}</Text>
+                                                    </>
+                                                )}
                                             </View>
                                         )
                                     })}

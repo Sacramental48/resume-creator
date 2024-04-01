@@ -69,5 +69,9 @@ export const styles = StyleSheet.create({
         backgroundColor: '#454541',
         height: '100%',
         Left: 4
+    },
+    lang: {
+        display: 'flex',
+        flexDirection: 'row',
     }
 });
