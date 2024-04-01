@@ -79,7 +79,7 @@ const PersonalInformation = () => {
             </section>
             <section className={styles.childFields}>
                 <Experience />
-                {/* <Education /> */}
+                <Education />
                 <Skills />
                 <LanguageLevel />
             </section>

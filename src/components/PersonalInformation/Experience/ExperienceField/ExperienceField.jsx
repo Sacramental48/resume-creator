@@ -1,10 +1,10 @@
 import React from 'react'
 import CustomInput from '@/components/UI/Input/Input.jsx'
-import styles from './ExperienceField.module.css'
 import { useDispatch } from 'react-redux'
 import { setPosition, setCompany, setFrom, setTo, setAccomplishments } from '@/store/actions/experienceActions.js';
 import { RiDeleteBack2Line } from "@react-icons/all-files/ri/RiDeleteBack2Line";
 import { FiFilePlus } from "@react-icons/all-files/fi/FiFilePlus";
+import styles from './ExperienceField.module.css'
 
 const ExperienceField = ({ deleteField, experienceField, addNewExperienceField, index }) => {
     const dispatch = useDispatch();
