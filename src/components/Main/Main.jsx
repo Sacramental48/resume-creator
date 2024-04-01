@@ -2,7 +2,7 @@ import React from 'react'
 import PersonalInformation from '../PersonalInformation/PersonalInformation.jsx'
 import TitleResumePage from '../TitleResumePage/TitleResumePage'
 import styles from './Main.module.css'
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
+import { PDFViewer } from '@react-pdf/renderer'
 import { useSelector } from 'react-redux';
 
 const Main = () => {
@@ -12,32 +12,24 @@ const Main = () => {
     const inputDataFields = useSelector(state => state.personalField);
     const skillFields = useSelector(state => state.skillsStateField);
     const languageFields = useSelector(state => state.languageStateField);
+    const togglePDF = useSelector(state => state.initialBooleanState.togglePDFValue);
 
     return (
         <main className={styles.main}>
-            <PersonalInformation />
-            {/* <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
-                <TitleResumePage 
-                    inputPersonalDataField={inputPersonalDataField} 
-                    experienceFields={experienceFields} 
-                    educationFields={educationFields} 
-                    inputDataFields={inputDataFields} 
-                    skillFields={skillFields}
-                    languageFields={languageFields}
-                />
-            </PDFViewer>
-            <PDFDownloadLink 
-                document={ 
-                    <TitleResumePage  
+            {togglePDF ? (
+                <PersonalInformation />
+            ) : (
+                <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
+                    <TitleResumePage 
                         inputPersonalDataField={inputPersonalDataField} 
                         experienceFields={experienceFields} 
                         educationFields={educationFields} 
-                        inputDataFields={inputDataFields}
-                        skillFields={skillFields} 
+                        inputDataFields={inputDataFields} 
+                        skillFields={skillFields}
                         languageFields={languageFields}
-                />} fileName='FORM'>
-                {({loading, error}) => (loading ? <button>Loading Document</button> : <button>Download</button>)}
-            </PDFDownloadLink> */}
+                    />
+                </PDFViewer>
+            )}
         </main>
     )
 }

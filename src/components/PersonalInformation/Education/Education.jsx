@@ -3,6 +3,7 @@ import EducationField from './EducationField/EducationField.jsx';
 import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEducationField, deleteEducationField, clearAllEducationFields} from '@/store/actions/educationActions.js';
+import { getBooleanValue } from '@/store/actions/booleanAction.js';
 import styles from './Education.module.css';
 
 const Education = () => {
@@ -28,7 +29,7 @@ const Education = () => {
 
     function deleteAllEducationField() {
         setEducationField([]);
-        dispatch(removeAllEducationField());
+        dispatch(clearAllEducationFields());
     };
 
     React.useEffect(() => {
