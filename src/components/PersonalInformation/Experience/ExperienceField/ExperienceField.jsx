@@ -3,6 +3,8 @@ import CustomInput from '@/components/UI/Input/Input.jsx'
 import styles from './ExperienceField.module.css'
 import { useDispatch } from 'react-redux'
 import { setPosition, setCompany, setFrom, setTo, setAccomplishments } from '@/store/actions/experienceActions.js';
+import { RiDeleteBack2Line } from "@react-icons/all-files/ri/RiDeleteBack2Line";
+import { FiFilePlus } from "@react-icons/all-files/fi/FiFilePlus";
 
 const ExperienceField = ({ deleteField, experienceField, addNewExperienceField, index }) => {
     const dispatch = useDispatch();
@@ -32,15 +34,17 @@ const ExperienceField = ({ deleteField, experienceField, addNewExperienceField, 
 
     return (
         <section className={styles.experienceField}>
-            <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
-            <CustomInput type="text" name="company" onChange={getInputValue} placeholder="Company" />
-            <div className='inputAdaptiveFieldsBlock'>
+            <div className={'inputAdaptiveFieldsBlock'} style={{ flexWrap: 'nowrap' }}>
+                <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
                 <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
                 <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
             </div>
+            <CustomInput type="text" name="company" onChange={getInputValue} placeholder="Company" />
             <textarea className={styles.textArea} type="text" name="accomplishments" onChange={getInputValue} placeholder="Accomplishments" />
-            <button className="button delete" onClick={deleteField}>Delete</button>
-            {index === experienceField.length - 1 && <button className='button active' onClick={addNewExperienceField}>Add</button>}
+            <div className={styles.buttons}>
+                {index === experienceField.length - 1 && <FiFilePlus size={30} onClick={addNewExperienceField} title="Add" />}
+                <RiDeleteBack2Line size={30} onClick={deleteField} title="Delete" />
+            </div>
         </section>
     )
 }

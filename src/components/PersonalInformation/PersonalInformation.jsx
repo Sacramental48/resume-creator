@@ -1,9 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFirstName, setLastName, setPosition, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription, clearPersonalField } from '@/store/actions/personalActions.js';
-import { addExperienceField } from '@/store/actions/experienceActions.js'
-import { addEducationField } from '@/store/actions/educationActions.js'
-import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import Experience from './Experience/Experience.jsx'
 import Education from './Education/Education.jsx'
 import Skills from './Skills/SkillsField.jsx'
@@ -13,26 +10,9 @@ import CustomInput from '@/components/UI/Input/Input.jsx'
 import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
-    const [experienceField, setExperienceField] = React.useState([]);
-    const [educationField, setEducationField] = React.useState([]);
-
     const inputDataMainField = useSelector(state => state.personalField);
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
-
-    const addNewExperienceField = () => {
-        const newField = { id: Date.now() };
-        setExperienceField([...experienceField, newField]);
-        dispatch(addExperienceField());
-        dispatch(getBooleanValue(false));
-    };
-
-
-    const addNewEducationField = () => {
-        setEducationField([...educationField, { id: Date.now() }]);
-        dispatch(addEducationField());
-        dispatch(getBooleanValue(false));
-    }
 
     const getInputValue = (e) => {
         const { name, value } = e.target;
@@ -95,29 +75,13 @@ const PersonalInformation = () => {
                 </div>
                 <div>
                     <button>+reference</button>
-
-                    <button className='button active' onClick={addNewExperienceField}>Experience</button>
-                    <button className='button active' onClick={addNewEducationField}>Education</button>
                 </div>
             </section>
             <section className={styles.childFields}>
+                <Experience />
+                {/* <Education /> */}
                 <Skills />
                 <LanguageLevel />
-                {experienceField.length !== 0 && (
-                    <Experience 
-                        addNewExperienceField={addNewExperienceField} 
-                        experienceField={experienceField} 
-                        setExperienceField={setExperienceField} 
-                    />
-                )}
-                {educationField.length !== 0 && (
-                    <Education 
-                        addNewEducationField={addNewEducationField}
-                        educationField={educationField}
-                        setEducationField={setEducationField}
-                    />
-                )}
-                
             </section>
         </form>
     )
