@@ -19,7 +19,7 @@ const Main = () => {
             {togglePDF ? (
                 <PersonalInformation />
             ) : (
-                <PDFViewer style={{height: '1200px', color: '#1d3746'}}>
+                <PDFViewer showToolbar={false} className={styles.pdfView}>
                     <TitleResumePage 
                         inputPersonalDataField={inputPersonalDataField} 
                         experienceFields={experienceFields} 
