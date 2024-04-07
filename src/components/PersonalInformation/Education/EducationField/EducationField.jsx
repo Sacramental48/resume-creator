@@ -1,8 +1,10 @@
 import React from 'react'
 import CustomInput from '@/components/UI/Input/Input.jsx'
-import styles from './EducationField.module.css'
 import { useDispatch } from 'react-redux'
 import { setUniversityName, setFaculty, setFrom, setTo } from '@/store/actions/educationActions.js';
+import { RiDeleteBack2Line } from "@react-icons/all-files/ri/RiDeleteBack2Line";
+import { FiFilePlus } from "@react-icons/all-files/fi/FiFilePlus";
+import styles from './EducationField.module.css'
 
 const EducatioField = ({addNewEducationField, educationField, deleteField, index}) => {
     const dispatch = useDispatch();
@@ -29,18 +31,18 @@ const EducatioField = ({addNewEducationField, educationField, deleteField, index
 
     return ( 
         <section className={styles.educationField}> 
-          <div className='inputAdaptiveFieldsBlock'> 
-            <CustomInput type="text" name="universityName" onChange={getEducationValue} placeholder="Educational Institution" /> 
-            <CustomInput type="text" name="faculty" onChange={getEducationValue} placeholder="Faculty" /> 
-          </div> 
-          <div className='inputAdaptiveFieldsBlock'> 
-            <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" /> 
-            <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
-          </div> 
-          <button className='button delete' onClick={deleteField}>Delete</button> 
-          {index === educationField.length - 1 && (
-            <button className='button active' onClick={addNewEducationField}>Add</button>
-          )}
+            <div className='inputAdaptiveFieldsBlock'> 
+                <CustomInput type="text" name="universityName" onChange={getEducationValue} placeholder="Educational Institution" /> 
+                <CustomInput type="text" name="faculty" onChange={getEducationValue} placeholder="Faculty" /> 
+            </div> 
+            <div className='inputAdaptiveFieldsBlock'> 
+                <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" /> 
+                <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
+            </div> 
+            <div className={styles.buttons}>
+                {index === educationField.length - 1 && <FiFilePlus size={30} onClick={addNewEducationField} title="Add" />}
+                <RiDeleteBack2Line size={30} onClick={deleteField} title="Delete" />
+            </div>
         </section> 
       )
       

@@ -15,3 +15,14 @@
 .educationField button {
     margin-left: auto;
 }
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons svg {
+    cursor: pointer;
+}
