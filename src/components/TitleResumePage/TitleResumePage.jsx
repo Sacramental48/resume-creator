@@ -10,6 +10,8 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
     const hasLastName = inputPersonalDataField.firstName || null;
     const hasPosition = inputPersonalDataField.position || null;
 
+    console.log(experienceFields);
+
     Font.register({ family: 'SourceSansPro', fonts: [
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf' },
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rAkA.ttf', fontWeight: 600 },
@@ -53,10 +55,10 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                         )}
                         
                         <View style={{marginBottom: 10}}>
-                            {experienceFields.length !== 0 && (
+                            {experienceFields.length !== 0 && ( 
                                 <>
                                     <Text style={[styles.title, {paddingLeft: 16}]}>EXPERIENCE</Text>
-                                    {experienceFields.map((experience, index) => {
+                                    {experienceFields.map((experience, index) => (
                                         <View key={index} style={{marginBottom: 15}}>
                                             <Text style={[styles.text, {fontSize: 12, opacity: .8}]}>{experience.from} - {experience.to}</Text>
                                             <View style={styles.description}>
@@ -65,7 +67,7 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
                                                 <Text style={[styles.text, {fontSize: 10, opacity: .7}]}>{experience.accomplishments}</Text>
                                             </View>
                                         </View>
-                                    })}
+                                    ))}
                                 </>
                             )}
                         </View>

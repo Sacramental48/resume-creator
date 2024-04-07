@@ -13,7 +13,7 @@ const Main = () => {
     const skillFields = useSelector(state => state.skillsStateField);
     const languageFields = useSelector(state => state.languageStateField);
     const togglePDF = useSelector(state => state.initialBooleanState.togglePDFValue);
-
+    
     return (
         <main className={styles.main}>
             {togglePDF ? (
