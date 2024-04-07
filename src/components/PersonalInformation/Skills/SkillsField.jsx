@@ -3,12 +3,14 @@ import CutomInput from '@/components/UI/Input/Input.jsx'
 import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSkillName, setSkillLevel, addSkillField, deleteCurrentSkillField, deleteAllSkillFields } from '@/store/actions/skillsAction'
+import { getBooleanValue } from '@/store/actions/booleanAction.js';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import styles from './Skills.module.css'
 
 const Skills = () => {
     const skillFields = useSelector(state => state.skillsStateField);
-    
+    const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue);
+
     const dispatch = useDispatch();
     
     const [rangeValue, setRangeValue] = React.useState([]);
@@ -44,6 +46,7 @@ const Skills = () => {
         dispatch(setSkillLevel(20, skillFields.length));
         setRangeValue([...rangeValue, 20]);
         setIsOpen(true);
+        dispatch(getBooleanValue(false));
     }
 
     function deleteSkill(_, index) {
@@ -59,14 +62,22 @@ const Skills = () => {
     function deleteAllSkills() {
         setSkillFielsValue([]);
         dispatch(deleteAllSkillFields());
-        setRangeValue([])
+        setRangeValue([]);
     }
 
     React.useEffect(() => {
         if(!skillFieldsValue.length) {
-            setIsOpen(false)
+            setIsOpen(false);
         }
-    }, [skillFieldsValue])
+    }, [skillFieldsValue]);
+
+    React.useEffect(() => {
+        if(toggleBooleanValue) {
+            setSkillFielsValue([]);
+            setRangeValue([]);
+            dispatch(deleteAllSkillFields());
+        }
+    }, [toggleBooleanValue])
 
     return (
         <ControlsAccordion 

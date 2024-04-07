@@ -1,12 +1,15 @@
-import React from 'react'
-import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion'
-import CustmInput from '@/components/UI/Input/Input.jsx'
+import React from 'react';
+import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion';
+import CustmInput from '@/components/UI/Input/Input.jsx';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
-import { setInputField, setBeginner, setElementary, setIntermediate, setUpperIntermediate, setAdvanced, setMastery, addNewLangField, deleteCurrentLangField, deleteAllLangFields } from '@/store/actions/languageActions'
-import { useDispatch } from 'react-redux'
-import styles from './Language.module.css'
+import { setInputField, setBeginner, setElementary, setIntermediate, setUpperIntermediate, setAdvanced, setMastery, addNewLangField, deleteCurrentLangField, deleteAllLangFields } from '@/store/actions/languageActions';
+import { getBooleanValue } from '@/store/actions/booleanAction.js';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './Language.module.css';
 
 const LanguageLevel = () => {
+    const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
+
     const [langFieldsValue, setLangFieldsValue] = React.useState([]);
     const [isOpenLanguage, setIsOpenLanguage] = React.useState(false);
 
@@ -17,7 +20,7 @@ const LanguageLevel = () => {
         const index = Number(e.target.dataset.index);
 
         dispatch(setInputField(value, index));
-    }
+    };
     
     const getRadioValue = (e) => {
         const { value } = e.target;
@@ -55,32 +58,41 @@ const LanguageLevel = () => {
             default:
                 break;
         }
-    }
+    };
 
     const addLangField = (e) => {
         e.stopPropagation();
         const id = { id: Date.now() };
         setLangFieldsValue([...langFieldsValue, id]);
         dispatch(addNewLangField());
+        dispatch(getBooleanValue(false));
         setIsOpenLanguage(true);
-    }
+    };
 
     function deleteLanguageField(_, index) {
         const updatedLanguageFields = langFieldsValue.filter((_, idx) => idx !== index);
         setLangFieldsValue(updatedLanguageFields);
         dispatch(deleteCurrentLangField(index));
-    }
+    };
 
     function deleteAllFields() {
         setLangFieldsValue([]);
         dispatch(deleteAllLangFields());
-    }
+    };
 
     React.useEffect(() => {
         if(!langFieldsValue.length) {
             setIsOpenLanguage(false)
         }
-    }, [langFieldsValue])
+    }, [langFieldsValue]);
+
+    React.useEffect(() => {
+        if(toggleBooleanValue) {
+            setLangFieldsValue([]);
+            dispatch(deleteAllLangFields());
+        }
+    }, [toggleBooleanValue]);
+
     return (
         <ControlsAccordion 
             name={'Languages'}
