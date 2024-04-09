@@ -18,6 +18,10 @@
     align-items: center;
 }
 
+.title {
+    color: #66666c;
+}
+
 .childFields {
     display: flex;
     flex-direction: column;

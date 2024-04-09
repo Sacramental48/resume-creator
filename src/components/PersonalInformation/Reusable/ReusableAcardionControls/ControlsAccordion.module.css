@@ -11,10 +11,14 @@
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: #b2b2b2;
+    background-color: #50536c;
     border-radius: inherit;
     padding: 20px;
     cursor: pointer;
+}
+
+.title {
+    color: #fff;
 }
 
 .controlsContainer {

@@ -24,8 +24,8 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
             <div className={`${styles.header} ${isOpen ? styles.borderBottomNone : ''}`} onClick={toggle}>
                 <h2 className={styles.title}>{name}</h2>
                 <div className={styles.controlsContainer}>
-                    <IoIosAddCircleOutline onClick={addFunction} size={30} />
-                    <FaRegTrashAlt onClick={deleteFunction} size={24} />
+                    <IoIosAddCircleOutline onClick={addFunction} size={30} color={'#fff'} />
+                    <FaRegTrashAlt onClick={deleteFunction} size={24} color={'#fff'} />
                 </div>
             </div>
             {children}

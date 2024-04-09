@@ -3,7 +3,9 @@ import styles from './Header.module.css'
 const Header = () => {
     return (
         <header className={styles.header}>
-            <p className={styles.logo}>CV CREATOR</p>
+            <div className={styles.container}>
+                <p className={styles.logo}>CV CREATOR</p>
+            </div>
         </header>
     )
 }

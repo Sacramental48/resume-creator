@@ -56,7 +56,7 @@ const Reference = () => {
     React.useEffect(() => {
         if(toggleBooleanValue) {
             setReferenceField([]);
-            dispatch(clearAllEducationFields());
+            dispatch(deleteAllReferenceField());
         }
     }, [toggleBooleanValue]);
 
