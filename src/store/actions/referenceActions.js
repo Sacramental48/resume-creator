@@ -8,9 +8,9 @@ export const setReferenceCompanyName = (companyName, index) => ({
     payload: { companyName, index }
 });
 
-export const setReferencePosition = (postition, index) => ({
+export const setReferencePosition = (position, index) => ({
     type: 'SET_REFERENCE_POSITION',
-    payload: { postition, index }
+    payload: { position, index }
 });
 
 export const setReferencePhone = (phone, index) => ({

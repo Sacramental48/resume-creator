@@ -20,7 +20,7 @@ function getReferencesStateField(state = referenceStateField, action) {
             return state.map((item, idx) => idx === index ? { ...item, companyName: action.payload.companyName } : item );
 
         case 'SET_REFERENCE_POSITION':
-            return state.map((item, idx) => idx === index ? { ...item, postition: action.payload.postition } : item );
+            return state.map((item, idx) => idx === index ? { ...item, position: action.payload.position } : item );
 
         case 'SET_REFERENCE_PHONE':
             return state.map((item, idx) => idx === index ? { ...item, phone: action.payload.phone } : item );

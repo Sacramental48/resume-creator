@@ -75,9 +75,6 @@ const PersonalInformation = () => {
                     <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
                     <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="About yourself" />
                 </div>
-                <div>
-                    <button>+reference</button>
-                </div>
             </section>
             <section className={styles.childFields}>
                 <Experience />

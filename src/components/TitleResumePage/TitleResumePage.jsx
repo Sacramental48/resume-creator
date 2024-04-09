@@ -1,16 +1,19 @@
-import React from 'react'
-import { Phone, Email, Location } from '@/components/svg/icons.jsx'
-import {styles}  from './styles.js';
-import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
+import React from 'react';
 
-const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, inputDataFields, skillFields, languageFields, referenceFields}) => {
-    const hasPersonalValue = Object.values(inputPersonalDataField).some(item => item !== '');
+import ResumeExperience from './TitleResumeExperience/ResumeExperience.jsx';
+import ResumeReference from './TitleResumeReference/ResumeReference.jsx';
+import ResumePersonal from './TitleResumePersonal/ResumePersonal.jsx';
+import ResumeContact from './TitleResumePersonal/ResumeContact.jsx';
+import ResumeLanguage from './TitleResumeLanguage/ResumeLanguage.jsx';
+import ResumeSkill from './TitleResumeSkill/ResumeSkill.jsx';
+import ResumeEducation from './TitleResumeEducation/ResumeEducation.jsx';
+
+import { Page, Text, View, Document, Font } from '@react-pdf/renderer';
+import { styles }  from './styles.js';
+
+const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFields, skillFields, languageFields, referenceFields}) => {
+    
     const hasAboutMe = inputPersonalDataField.description || null;
-    const hasFirstName = inputPersonalDataField.lastName || null;
-    const hasLastName = inputPersonalDataField.firstName || null;
-    const hasPosition = inputPersonalDataField.position || null;
-
-    console.log(experienceFields);
 
     Font.register({ family: 'SourceSansPro', fonts: [
         { src: 'https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf' },
@@ -36,159 +39,21 @@ const TitleResumePage = ({inputPersonalDataField, experienceFields, educationFie
             <Page size="A4" style={styles.page}>
                 <View style={styles.info}>
                     <View style={styles.section}>
-                        <View style={styles.header}>
-                            {hasFirstName && (
-                                <Text style={[styles.text, {fontSize: 46, fontWeight: 800, marginBottom: -10}]}>{`${inputDataFields.firstName || 'Name'}`}</Text>  
-                            )}
-                            {hasLastName && (
-                                <Text style={[styles.text, {fontSize: 30}]}>{`${inputDataFields.lastName || 'Surname'}`}</Text>
-                            )}
-                            {hasPosition && (
-                                <Text style={[styles.text, {fontSize: 16}]}>{inputDataFields.position || 'Position'}</Text>
-                            )}
-                        </View>
+                        <ResumeContact inputPersonalDataField={inputPersonalDataField} />
                         {hasAboutMe && (
                             <View style={{marginBottom: 2}}>
                                 <Text style={[styles.title, {paddingLeft: 16}]}>ABOUT ME</Text>
                                 <Text style={[styles.text, {fontSize: 10, lineHeight: '1em'}]}>{inputPersonalDataField.description || '-'}</Text>
                             </View>
                         )}
-                        
-                        {/* <View style={{marginBottom: 2}}> */}
-                            {experienceFields.length !== 0 && ( 
-                                <>
-                                    <Text style={[styles.title, {paddingLeft: 16}]}>EXPERIENCE</Text>
-                                    {experienceFields.map((experience, index) => (
-                                        <View key={index} style={{marginBottom: 12}}>
-                                            <Text style={[styles.text, {fontSize: 10, opacity: .8}]}>{experience.from} - {experience.to}</Text>
-                                            <View style={styles.description}>
-                                                <View style={{display: 'flex', flexDirection: 'row', marginBottom: 0}}>
-                                                    <Text style={[styles.text, {fontSize: 14, fontWeight: 600}]}>{experience.position}</Text>
-                                                    <Text style={[styles.text, {fontSize: 14, fontWeight: 600, marginBottom: 2}]}>{experience.company}</Text>
-                                                </View>
-                                                <Text style={[styles.text, {fontSize: 10, opacity: .7}]}>{experience.accomplishments}</Text>
-                                            </View>
-                                        </View>
-                                    ))}
-                                </>
-                            )}
-                        {/* </View> */}
-                        {/* <View> */}
-                            {referenceFields.length !== 0 && (
-                                <>
-                                    <Text style={[styles.title, {paddingLeft: 16}]}>REFERENCE</Text>
-                                    <View style={{display: 'flex', flexDirection: 'row', gap: 10}}>
-                                        {referenceFields.map((refer, index) => (
-                                            <View key={index} style={{marginBottom: 15}}>
-                                                <Text style={[styles.text, {fontWeight: 600, fontSize: 16}]}>{refer.name}</Text>
-                                                <View style={styles.referenceInfoCompany}>
-                                                    <Text style={[styles.text, {fontSize: 12}]}>{refer.companyName}</Text>
-                                                    <Text style={{margin: '0 5', fontSize: 12}}>/</Text>
-                                                    <Text style={[styles.text, {fontSize: 12}]}>{refer.position}</Text>
-                                                </View>
-                                                <View style={[styles.referenceInfoCompany, {marginBottom: 0}]}>
-                                                    <Text style={[styles.text, {fontSize: 10, fontWeight: 600, marginRight: 8}]}>Phone:</Text>
-                                                    <Text style={[styles.text, {fontSize: 10}]}>{refer.phone}</Text>
-                                                </View>
-                                                <View style={styles.referenceInfoCompany}>
-                                                    <Text style={[styles.text, {fontSize: 10, fontWeight: 600, marginRight: 8}]}>Email:</Text>
-                                                    <Text style={[styles.text, {fontSize: 10}]}>{refer.email}</Text>
-                                                </View>
-                                            </View>
-                                        ))}
-                                    </View>
-                                    
-                                </>
-                            )}
-                        {/* </View> */}
+                        <ResumeExperience experienceFields={experienceFields} />
+                        <ResumeReference referenceFields={referenceFields} />
                     </View> 
                     <View style={styles.aside}>
-                        {hasPersonalValue && (
-                            <>
-                                <Image src={inputPersonalDataField.photo || '/img/default-avatar.png'} alt='avatar' style={styles.image} />
-                                <View>
-                                    <Text style={[styles.title, {textAlign: 'center'}]}>CONTACT</Text>
-                                    {inputPersonalDataField.phoneNumber.length !== 0 && (
-                                        <View style={styles.contact}>
-                                            <Phone />
-                                            <Text style={[styles.text, {fontSize: 10}]}>{inputPersonalDataField.phoneNumber || '-'}</Text>
-                                        </View>
-                                    )}
-                                    {inputPersonalDataField.address.length !== 0 && (
-                                        <View style={styles.contact}>
-                                            <Email />
-                                            <Text style={[styles.text, {fontSize: 10}]}>{inputPersonalDataField.address || '-'}</Text>
-                                        </View>
-                                    )}
-                                    {/* {inputPersonalDataField.web.length !== 0 && (
-                                        <View style={styles.contact}>
-                                            <Web />
-                                            <Text style={[styles.text, {fontSize: 10}]}>-</Text>
-                                        </View>
-                                    )} */}
-                                    {inputPersonalDataField.email.length !== 0 && (
-                                        <View style={styles.contact}>
-                                            <Location />
-                                            <Text style={[styles.text, {fontSize: 10}]}>{inputPersonalDataField.email || '-'}</Text>
-                                        </View>
-                                    )}
-                                </View>
-                            </>
-                        )}
-                        <View style={{marginBottom: 10}}>
-                            {educationFields.length !== 0 && (
-                                <>
-                                    <Text style={[styles.title, {textAlign: 'center'}]}>EDUCATION</Text>
-                                    {educationFields.map((education, index) => (
-                                        <View key={index} style={{marginBottom: 10}}>
-                                            <View style={styles.description}>
-                                                <Text style={[styles.text, {fontSize: 12}]}>{education.faculty}</Text>
-                                                <Text style={[styles.text, {fontSize: 14}]}>{education.universityName}</Text>
-                                            </View>
-                                            <Text style={[styles.text, {fontSize: 10, opacity: .6}]}>{education.from} - {education.to}</Text>
-                                        </View>
-                                    ))}
-                                </>
-                            )}
-                        </View>
-                        <View style={{marginBottom: 10}}>
-                            {skillFields.length !== 0 && (
-                                <>
-                                    <Text style={[styles.title, {textAlign: 'center'}]}>SKILLS</Text>
-                                    {skillFields.map((skill, index) => {
-                                        return (
-                                            <View style={styles.skills} key={index}>
-                                                <Text style={[styles.text, {fontSize: 12, fontWeight: 800}]}>{skill.skillName}:</Text>
-                                                <View style={{width: '50%', height: 6, border: '0.4px solid black', borderRadius: 24}}>
-                                                    {skill && skill.skillLevel !== undefined && (
-                                                        <Text style={[styles.lineSkill, {width: `${skill.skillLevel}%`}]}></Text>
-                                                    )}
-                                                </View>
-                                            </View>
-                                        )
-                                    })}
-                                </>
-                            )}
-                        </View>
-                        <View>
-                            {languageFields.length !== 0 && (
-                                <>
-                                    <Text style={[styles.title, {textAlign: 'center'}]}>LANGUAGE</Text>
-                                    {languageFields.map((lang, index) => {
-                                        return (
-                                            <View key={index} style={styles.lang}>
-                                                {lang.inputField && (
-                                                    <>
-                                                        <Text style={[styles.text, {fontSize: 12}]}>{lang.inputField}: </Text>
-                                                        <Text style={[styles.text, {fontSize: 12}]}>{lang.level}</Text>
-                                                    </>
-                                                )}
-                                            </View>
-                                        )
-                                    })}
-                                </>
-                            )}
-                        </View>
+                        <ResumePersonal inputPersonalDataField={inputPersonalDataField} />
+                        <ResumeEducation educationFields={educationFields} />
+                        <ResumeSkill skillFields={skillFields} />
+                        <ResumeLanguage languageFields={languageFields} />
                     </View>
                 </View>
             </Page>
