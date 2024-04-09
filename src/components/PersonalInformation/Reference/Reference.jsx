@@ -28,6 +28,12 @@ const Reference = () => {
         dispatch(deleteAllReferenceField());
     };
 
+    const deleteCurrentField = (_, index) => {
+        const updatedReferenceFields = referenceField.filter((_, idx) => idx !== index);
+        setReferenceField(updatedReferenceFields);
+        dispatch(deleteCurrentReferenceField(index));
+    }
+
     const getInputValues = (e) => {
         const {name, value} = e.target;
         const idx = +e.target.dataset.index;
@@ -95,7 +101,7 @@ const Reference = () => {
                                     </div>
                                 </div>
                             </div>
-                            <FaRegTrashAlt size={30} />
+                            <FaRegTrashAlt size={30} onClick={() => deleteCurrentField(reference.id, index)} />
                         </div>
                     ))}
                 </fieldset>
