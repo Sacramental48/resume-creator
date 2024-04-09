@@ -63,17 +63,23 @@ const PersonalInformation = () => {
                     <h2 className={styles.title}>Personal Information</h2>
                     <Group />
                 </div>
-                <div className="inputAdaptiveFieldsBlock">
-                    <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="Name" />
-                    <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Surname" />
-                    <CustomInput type="text" name="position" value={inputDataMainField.position} onChange={getInputValue} placeholder="Position" />
-                    <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
+                <div className={styles.body}>
+                    <div className={styles.columnA}>
+                        <div className='inputAdaptiveFieldsBlock'>
+                            <CustomInput type="text" name="firstName" value={inputDataMainField.firstName} onChange={getInputValue} placeholder="Name" />
+                            <CustomInput type="text" name="lastName" value={inputDataMainField.lastName} onChange={getInputValue} placeholder="Surname" />
+                        </div>
+                        <CustomInput type="text" name="position" value={inputDataMainField.position} onChange={getInputValue} placeholder="Position" />
+                        <CustomInput type="tel" name="phoneNumber" value={inputDataMainField.phoneNumber} onChange={getInputValue} placeholder="Phone number" />
+                    </div>
+                    <div className={styles.columnB}>
+                        <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
+                        <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
+                        <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
+                    </div>
                 </div>
-                <div className="inputAdaptiveFieldsBlock">
-                    <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
-                    <CustomInput type="tel" name="phoneNumber" value={inputDataMainField.phoneNumber} onChange={getInputValue} placeholder="Phone number" />
-                    <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
-                    <CustomInput type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="About yourself" />
+                <div>
+                    <textarea className={styles.textArea} type="text" name="description" value={inputDataMainField.description} onChange={getInputValue} placeholder="Write About yourself" />
                 </div>
             </section>
             <section className={styles.childFields}>

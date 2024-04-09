@@ -24,33 +24,15 @@ body {
 .button {
     width: 100%;
     max-width: 120px;
-    border: none;
     border-radius: 4px;
     height: 34px;
     padding: 4px 6px;
     cursor: pointer;
     font-size: 20px;
     font-weight: 700;
-}
-
-.delete {
-    background-color: #7a1212;
-    color: #fff;
-}
-
-.active {
-    background-color: #28b32b;
-    color: #fff;
-}
-
-.reset {
-    background-color: #7a1212;
-    color: #fff;
-}
-
-.pdf {
-    background-color: #0d7369;
-    color: #fff;
+    background-color: #ffffffc7;
+    border: 3px solid #50536c;
+    color: #50536c;
 }
 
 @media screen and (max-width: 475px) {

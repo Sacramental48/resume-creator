@@ -14,8 +14,8 @@ const Group = () => {
     };
     return (
         <section className={styles.group}>
-            <button className='button reset' onClick={removeInputsAndFields}>Remove</button>
-            <button className='button pdf' onClick={togglePDF}>PDF</button>
+            <button className='button' onClick={removeInputsAndFields}>Remove</button>
+            <button className='button' onClick={togglePDF}>PDF</button>
         </section>
     )
 }
