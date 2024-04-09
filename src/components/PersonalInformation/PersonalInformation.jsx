@@ -7,6 +7,7 @@ import Education from './Education/Education.jsx'
 import Skills from './Skills/SkillsField.jsx'
 import LanguageLevel from './LanguageLevel/Language.jsx'
 import Group from './Group/Group.jsx'
+import Reference from './Reference/Reference.jsx';
 import CustomInput from '@/components/UI/Input/Input.jsx'
 import styles from './PersonalInformation.module.css'
 
@@ -83,6 +84,7 @@ const PersonalInformation = () => {
                 <Education />
                 <Skills />
                 <LanguageLevel />
+                <Reference />
             </section>
         </form>
     )

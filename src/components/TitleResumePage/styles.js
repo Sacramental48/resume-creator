@@ -1,6 +1,14 @@
 import { StyleSheet } from '@react-pdf/renderer';
 
 export const styles = StyleSheet.create({
+    View: {
+        border: '1px solid red'
+    },
+    reset: {
+        margin: 0,
+        padding: 0,
+        boxSizing: "border-box",
+    },
     header: {
         display: 'flex',
         flexDirection: 'column',
@@ -73,5 +81,10 @@ export const styles = StyleSheet.create({
     lang: {
         display: 'flex',
         flexDirection: 'row',
+    },
+    referenceInfoCompany: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginBottom: 6
     }
 });

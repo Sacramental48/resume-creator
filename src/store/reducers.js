@@ -4,6 +4,7 @@ import { experienceReduce } from './reducers/experienceReduce';
 import { educationReduce } from './reducers/educationReduce';
 import { skillReduce } from './reducers/skillsReduce';
 import { languageReduce } from './reducers/languageReduce';
+import { referenceReduce } from './reducers/referenceReduce';
 import { toggleReducer } from './reducers/booleanReduce';
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     initialBooleanState: toggleReducer,
     skillsStateField: skillReduce,
     languageStateField: languageReduce,
+    referenceStateField: referenceReduce
 });
 
 export default rootReducer;

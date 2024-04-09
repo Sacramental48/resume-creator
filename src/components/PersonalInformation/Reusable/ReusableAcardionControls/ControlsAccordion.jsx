@@ -20,7 +20,7 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
     }, [arrayValues]);
 
     return (
-        <div className={styles.details}>
+        <section className={styles.details}>
             <div className={`${styles.header} ${isOpen ? styles.borderBottomNone : ''}`} onClick={toggle}>
                 <h2 className={styles.title}>{name}</h2>
                 <div className={styles.controlsContainer}>
@@ -29,7 +29,7 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
                 </div>
             </div>
             {children}
-        </div>
+        </section>
     )
 }
 

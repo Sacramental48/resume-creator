@@ -12,8 +12,9 @@ const Main = () => {
     const inputDataFields = useSelector(state => state.personalField);
     const skillFields = useSelector(state => state.skillsStateField);
     const languageFields = useSelector(state => state.languageStateField);
+    const referenceFields = useSelector(state => state.referenceStateField);
     const togglePDF = useSelector(state => state.initialBooleanState.togglePDFValue);
-    
+
     return (
         <main className={styles.main}>
             {togglePDF ? (
@@ -27,6 +28,7 @@ const Main = () => {
                         inputDataFields={inputDataFields} 
                         skillFields={skillFields}
                         languageFields={languageFields}
+                        referenceFields={referenceFields}
                     />
                 </PDFViewer>
             )}
