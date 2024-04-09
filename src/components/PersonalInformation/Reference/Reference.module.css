@@ -1,19 +1,27 @@
 .referenceForm {
     display: flex;
-    flex-direction: column;
     gap: 20px;
     padding: 20px;
+}
+
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: none;
 }
 
 .content {
     display: flex;
     flex-direction: column;
+    align-items: baseline;
+    width: 100%;
     gap: 10px;
-    border: none;
 }
 
 .inputGroup {
-    display: flex;;
+    display: flex;
+    width: 100%;
     gap: 10px;
 }
 

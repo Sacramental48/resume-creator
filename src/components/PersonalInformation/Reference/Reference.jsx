@@ -4,6 +4,7 @@ import CustomInput from '@/components/UI/Input/Input.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReferenceName, setReferenceCompanyName, setReferencePosition, setReferencePhone, setReferenceEmail, addReferenceField, deleteCurrentReferenceField, deleteAllReferenceField } from '@/store/actions/referenceActions.js';
 import { getBooleanValue } from '@/store/actions/booleanAction.js';
+import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import styles from './Reference.module.css';
 
 const Reference = () => {
@@ -70,28 +71,31 @@ const Reference = () => {
             deleteFunction={deleteAllFields}
         >
             {isOpenReference && (
-                <fieldset className={styles.content}>
+                <fieldset className={styles.fieldset}>
                     {referenceField.map((reference, index) => (
                         <div key={reference.id} className={styles.referenceForm}>
-                            <div className={styles.inputGroup}>
-                                <div className={styles.inputName}>
-                                    <CustomInput type="text" name={`name-${index}`} data-index={index} placeholder="Enter name" onChange={getInputValues} />
+                            <div className={styles.content}>
+                                <div className={styles.inputGroup}>
+                                    <div className={styles.inputName}>
+                                        <CustomInput type="text" name={`name-${index}`} data-index={index} placeholder="Enter name" onChange={getInputValues} />
+                                    </div>
+                                    <div className={styles.inputCompany}>
+                                        <CustomInput type="text" name={`companyName-${index}`} data-index={index} placeholder="Enter company name" onChange={getInputValues} />
+                                    </div>
+                                    <div className={styles.inputPosition}>
+                                        <CustomInput type="text" name={`position-${index}`} data-index={index} placeholder="Enter Job Title" onChange={getInputValues} />
+                                    </div>
                                 </div>
-                                <div className={styles.inputCompany}>
-                                    <CustomInput type="text" name={`companyName-${index}`} data-index={index} placeholder="Enter company name" onChange={getInputValues} />
-                                </div>
-                                <div className={styles.inputPosition}>
-                                    <CustomInput type="text" name={`position-${index}`} data-index={index} placeholder="Enter Job Title" onChange={getInputValues} />
+                                <div className={styles.inputGroup}>
+                                    <div className={styles.inputPhone}>
+                                        <CustomInput type="tel" name={`phone-${index}`} data-index={index} placeholder="Enter phone number" onChange={getInputValues} />
+                                    </div>
+                                    <div className={styles.inputEmail}>
+                                        <CustomInput type="email" name={`email-${index}`} data-index={index} placeholder="Enter email address" onChange={getInputValues} />
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.inputGroup}>
-                                <div className={styles.inputPhone}>
-                                    <CustomInput type="tel" name={`phone-${index}`} data-index={index} placeholder="Enter phone number" onChange={getInputValues} />
-                                </div>
-                                <div className={styles.inputEmail}>
-                                    <CustomInput type="email" name={`email-${index}`} data-index={index} placeholder="Enter email address" onChange={getInputValues} />
-                                </div>
-                            </div>
+                            <FaRegTrashAlt size={30} />
                         </div>
                     ))}
                 </fieldset>

@@ -11,6 +11,11 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
         }
     };
 
+    const deleteFunc = (e) => {
+        e.stopPropagation();
+        deleteFunction();
+    }
+
     React.useEffect(() => {
         if(arrayValues.length > 0) {
             setIsOpen(true)
@@ -25,7 +30,7 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
                 <h2 className={styles.title}>{name}</h2>
                 <div className={styles.controlsContainer}>
                     <IoIosAddCircleOutline onClick={addFunction} size={30} color={'#fff'} />
-                    <FaRegTrashAlt onClick={deleteFunction} size={24} color={'#fff'} />
+                    <FaRegTrashAlt onClick={deleteFunc} size={24} color={'#fff'} />
                 </div>
             </div>
             {children}

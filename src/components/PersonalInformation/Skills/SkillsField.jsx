@@ -116,7 +116,7 @@ const Skills = () => {
                                 data-index={index}
                             />
                         </div>
-                        <FaRegTrashAlt className={styles.trash} size={18} onClick={() => deleteSkill(field.id, index)} />
+                        <FaRegTrashAlt className={styles.trash} size={28} onClick={() => deleteSkill(field.id, index)} />
                     </div>
                 ))}
             </div>
