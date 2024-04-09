@@ -1,0 +1,29 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    border-radius: 6mm;
+    width: 100%;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #b2b2b2;
+    border-radius: inherit;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.controlsContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.borderBottomNone {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

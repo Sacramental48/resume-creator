@@ -1,0 +1,46 @@
+.referenceForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: none;
+}
+
+.inputGroup {
+    display: flex;;
+    gap: 10px;
+}
+
+.inputGroup div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputName, .inputCompany, .inputPosition {
+    width: 100%;
+}
+
+.inputPhone {
+    width: 40%;
+}
+.inputEmail {
+    width: 60%;
+}
+
+@media screen and (max-width: 525px) {
+    .inputGroup {
+        flex-direction: column;
+    }
+
+    .inputPhone, .inputEmail {
+        width: 100%;
+    }
+    
+}

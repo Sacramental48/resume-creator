@@ -1,7 +1,7 @@
 const personalField = {
     firstName: '',
     lastName: '',
-    title: '',
+    position: '',
     photo: '',
     address: '',
     phoneNumber: '',
@@ -21,7 +21,7 @@ function getPersonalField(state = personalField, action) {
             return {
                 firstName: '',
                 lastName: '',
-                title: '',
+                position: '',
                 photo: '',
                 address: '',
                 phoneNumber: '',
@@ -35,10 +35,10 @@ function getPersonalField(state = personalField, action) {
                 lastName: action.payload 
             };
 
-        case 'SET_TITLE':
+        case 'SET_POSITION':
             return {
                 ...state,
-                title: action.payload
+                position: action.payload
             };
 
         case 'SET_PHOTO':

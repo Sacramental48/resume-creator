@@ -9,9 +9,9 @@ export const setLastName = (lastName) => ({
     payload: lastName
 });
   
-export const setTitle = (title) => ({
-    type: 'SET_TITLE',
-    payload: title
+export const setPosition = (position) => ({
+    type: 'SET_POSITION',
+    payload: position
 });
   
 export const setPhoto = (photo) => ({
