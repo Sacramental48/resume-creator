@@ -1,7 +1,9 @@
-.education {
-    margin-bottom: 30px;
-}
-
 .educationTitle {
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 475px) {
+    .education {
+        width: 100%;
+    }
 }

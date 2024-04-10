@@ -1,7 +1,7 @@
 const personalField = {
     firstName: '',
     lastName: '',
-    title: '',
+    position: '',
     photo: '',
     address: '',
     phoneNumber: '',
@@ -17,16 +17,28 @@ function getPersonalField(state = personalField, action) {
                 firstName: action.payload
             };
         
+        case 'CLEAR_PERSONAL_FIELD':
+            return {
+                firstName: '',
+                lastName: '',
+                position: '',
+                photo: '',
+                address: '',
+                phoneNumber: '',
+                email: '',
+                description: ''
+            };
+
         case 'SET_LAST_NAME':
             return {
                 ...state,
                 lastName: action.payload 
             };
 
-        case 'SET_TITLE':
+        case 'SET_POSITION':
             return {
                 ...state,
-                title: action.payload
+                position: action.payload
             };
 
         case 'SET_PHOTO':
@@ -60,7 +72,4 @@ function getPersonalField(state = personalField, action) {
     }
 };
 
-export const mainFieldReduce = ({
-    personalField,
-    getPersonalField
-});
+export const mainFieldReduce = getPersonalField;

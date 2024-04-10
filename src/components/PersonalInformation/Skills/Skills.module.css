@@ -1,0 +1,28 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    border-bottom-right-radius: 6mm;
+}
+
+.skillField {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.skillName {
+    max-width: 240px;
+}
+
+.skillLevel {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.trash {
+    margin-left: auto;
+    margin-right: 20px;
+    cursor: pointer;
+}

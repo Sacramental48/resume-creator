@@ -1,26 +1,46 @@
-import React from 'react'
-import styles from './Group.module.css'
-import Button from '@/components/UI/Button/Button.jsx'
-import { useDispatch } from 'react-redux'
-import { setFirstName, setLastName, setTitle, setPhoto, setAddress, setPhoneNumber, setEmail, setDescription } from '@/store/actions.js';
+import React from 'react';
+import TitleResumePage from '@/components/TitleResumePage/TitleResumePage.jsx';
+import { useDispatch } from 'react-redux';
+import { pdf } from '@react-pdf/renderer';
+import { getBooleanValue } from '@/store/actions/booleanAction.js';
+import { saveAs } from 'file-saver';
+import { useSelector } from 'react-redux';
+import styles from './Group.module.css';
 
 const Group = () => {
+    const inputPersonalDataField = useSelector(state => state.personalField);
+    const experienceFields = useSelector(state => state.experienceStateField);
+    const educationFields = useSelector(state => state.educationStateField);
+    const skillFields = useSelector(state => state.skillsStateField);
+    const languageFields = useSelector(state => state.languageStateField);
+    const referenceFields = useSelector(state => state.referenceStateField);
+
     const dispatch = useDispatch();
-    
-    const resetInputValue = () => {
-        dispatch(setFirstName(''));
-        dispatch(setLastName(''));
-        dispatch(setTitle(''));
-        dispatch(setPhoto(''));
-        dispatch(setAddress(''));
-        dispatch(setPhoneNumber(''));
-        dispatch(setEmail(''));
-        dispatch(setDescription(''));
+
+    const removeInputsAndFields = () => {
+        dispatch(getBooleanValue(true));
     };
+
+    const downloadPDF = async (event) => {
+        event.preventDefault();
+        const blob = await pdf(
+            <TitleResumePage 
+            inputPersonalDataField={inputPersonalDataField} 
+            experienceFields={experienceFields} 
+            educationFields={educationFields} 
+            skillFields={skillFields} 
+            languageFields={languageFields} 
+            referenceFields={referenceFields} 
+            />
+        ).toBlob();
+    
+        saveAs(blob, 'myResumeFile.pdf');
+    }
+
     return (
         <section className={styles.group}>
-            <Button text='Reset' color="reset" className={styles.groupReset} onClick={resetInputValue}>Reset</Button>
-            <Button text='PDF' color="pdf" className={styles.groupPdf}>PDF</Button>
+            <button className='button' onClick={removeInputsAndFields}>Remove</button>
+            <button className='button' onClick={downloadPDF}>Download</button>
         </section>
     )
 }

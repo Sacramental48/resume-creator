@@ -1,0 +1,71 @@
+.input {
+    max-width: 200px;
+}
+
+.fieldset  {
+    display: flex;
+    gap: 10px;
+}
+
+.languageField {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.inputField {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ededed;
+    border-bottom-right-radius: 6mm;
+    border: none;
+    overflow: hidden;
+}
+
+.legend {
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+.option {
+    display: flex;
+    gap: 10px;
+}
+
+.optionItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.optionItem input {
+    cursor: pointer;
+}
+
+.label {
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 830px) {
+    .option {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .fieldset {
+        flex-direction: column;
+    }
+}

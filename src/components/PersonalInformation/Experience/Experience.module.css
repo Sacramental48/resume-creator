@@ -1,7 +1,10 @@
-.experience {
-    margin-bottom: 30px;
-}
-
 .experienceTitle {
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 475px) {
+    .experience {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }

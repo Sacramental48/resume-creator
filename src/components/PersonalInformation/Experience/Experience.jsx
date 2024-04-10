@@ -1,33 +1,67 @@
 import React from 'react'
-import Button from '@/components/UI/Button/Button.jsx'
 import ExperienceField from './ExperienceField/ExperienceField.jsx'
+import ControlsAccordion from '../Reusable/ReusableAcardionControls/ControlsAccordion.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { addExperienceField, deleteExperienceField, removeAllExperienceFields } from '@/store/actions/experienceActions.js'
+import { getBooleanValue } from '@/store/actions/booleanAction.js'
 import styles from './Experience.module.css'
-import { useDispatch } from 'react-redux'
-import { addExperienceField, deleteExperienceField} from '@/store/actions.js'
+
 const Experience = () => {
-    const dispatch = useDispatch();
     const [experienceField, setExperienceField] = React.useState([]);
+    const [isOpenExperience, setIsOpenExperience] = React.useState(false);
 
-    const addNewExperienceField = () => {
-        setExperienceField(
-            [...experienceField, { id: Date.now() }]);
+    const dispatch = useDispatch();
+    const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue);
+    
+    const addNewExperienceField = (e) => {
+        e.stopPropagation();
+        const newField = { id: Date.now() };
+        setExperienceField([...experienceField, newField]);
         dispatch(addExperienceField());
+        dispatch(getBooleanValue(false));
     };
 
-    const deleteCurrentField = (id) => {
-        console.log(id);
-        setExperienceField(experienceField.filter(item => item.id !== id));
-        dispatch(deleteExperienceField(id));
+    const deleteCurrentField = (id, index) => {
+        const updatedFields = experienceField.filter(field => field.id !== id);
+        setExperienceField(updatedFields);
+        dispatch(deleteExperienceField(index));
     };
 
+    function deleteAllExperienceField() {
+        setExperienceField([]);
+        dispatch(removeAllExperienceFields());
+    };
+
+    React.useEffect(() => {
+        if(toggleBooleanValue) {
+            setExperienceField([]);
+            dispatch(removeAllExperienceFields());
+        }
+    }, [toggleBooleanValue]);
+    
     return (
-        <section className={styles.experience}>
-            <h2 className={styles.experienceTitle}>Experience</h2>
-            {experienceField.map((field) => (
-                <ExperienceField key={field.id} id={field.id} deleteCreatedField={() => deleteCurrentField(field.id)} />
-            ))}
-            <Button text='Add' color="active" type="button" onClick={addNewExperienceField}></Button>
-        </section>
+        <ControlsAccordion
+            name={'Experience'}
+            addFunction={addNewExperienceField}
+            deleteFunction={deleteAllExperienceField}
+            arrayValues={experienceField}
+            isOpen={isOpenExperience}
+            setIsOpen={setIsOpenExperience}
+        >
+            {isOpenExperience && (
+                <section className={styles.experience}>
+                    {experienceField.map((field, index) => (
+                        <ExperienceField 
+                            key={field.id} 
+                            index={index} 
+                            experienceField={experienceField} 
+                            addNewExperienceField={addNewExperienceField} 
+                            deleteField={() => deleteCurrentField(field.id, index)}
+                        />
+                    ))}
+                </section>
+            )}
+        </ControlsAccordion>
     )
 }
 
