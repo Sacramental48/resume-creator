@@ -24,12 +24,6 @@ const ResumePersonal = ({inputPersonalDataField}) => {
                                 <Text style={[styles.text, {fontSize: 10}]}>{inputPersonalDataField.address || '-'}</Text>
                             </View>
                         )}
-                        {/* {inputPersonalDataField.web.length !== 0 && (
-                            <View style={styles.contact}>
-                                <Web />
-                                <Text style={[styles.text, {fontSize: 10}]}>-</Text>
-                            </View>
-                        )} */}
                         {inputPersonalDataField.email.length !== 0 && (
                             <View style={styles.contact}>
                                 <Location />

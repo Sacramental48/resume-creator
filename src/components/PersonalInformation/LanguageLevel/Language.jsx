@@ -101,7 +101,6 @@ const LanguageLevel = () => {
             arrayValues={langFieldsValue}
             addFunction={addLangField}
             deleteFunction={deleteAllFields}
-
         >
             {isOpenLanguage && (
                 <fieldset className={styles.content}>

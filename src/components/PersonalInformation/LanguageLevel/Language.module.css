@@ -10,8 +10,9 @@
 .languageField {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
+    gap: 20px;
+    padding: 20px;
 }
 
 .inputField {
@@ -27,8 +28,6 @@
     border-bottom-right-radius: 6mm;
     border: none;
     overflow: hidden;
-    gap: 20px;
-    padding: 20px;
 }
 
 .legend {

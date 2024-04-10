@@ -11,16 +11,16 @@
 
 .fieldset {
     overflow: hidden;
-    transition: max-height 1.4s ease-in; /* Применяем анимацию к высоте */
-    max-height: 0; /* Начальное значение для плавного открытия */
+    transition: max-height 1.4s ease-in;
+    max-height: 0;
   }
   
   .expanded {
-    max-height: 1000px; /* Высота для плавного открытия */
+    max-height: 1000px;
   }
   
   .collapsed {
-    max-height: 0; /* Закрытый аккордеон */
+    max-height: 0;
   }
 
 .header {
