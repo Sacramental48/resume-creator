@@ -1,14 +1,15 @@
-import React from 'react'
-import styles from './ControlsAccordion.module.css'
+import React, { useState, useEffect, useRef } from 'react';
+import styles from './ControlsAccordion.module.css';
 import { FaRegTrashAlt } from "@react-icons/all-files/fa/FaRegTrashAlt";
 import { IoIosAddCircleOutline } from "@react-icons/all-files/io/IoIosAddCircleOutline";
 
-const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isOpen, setIsOpen, children}) => {
+const ControlsAccordion = ({ name, addFunction, deleteFunction, arrayValues, isOpen, setIsOpen, children }) => {
+    const [contentHeight, setContentHeight] = useState('0px');
+    const contentRef = useRef(null);
+
     const toggle = (e) => {
         e.stopPropagation();
-        if(arrayValues.length > 0) {
-            setIsOpen(!isOpen);
-        }
+        setIsOpen(!isOpen);
     };
 
     const deleteFunc = (e) => {
@@ -16,13 +17,21 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
         deleteFunction();
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if(arrayValues.length > 0) {
             setIsOpen(true)
         } else {
             setIsOpen(false)
         }
     }, [arrayValues]);
+
+    useEffect(() => {
+        if (isOpen) {
+            setContentHeight(`${contentRef.current.scrollHeight}px`);
+        } else {
+            setContentHeight('0px');
+        }
+    }, [isOpen, children]);
 
     return (
         <section className={styles.details}>
@@ -33,7 +42,14 @@ const ControlsAccordion  = ({name, addFunction, deleteFunction, arrayValues, isO
                     <FaRegTrashAlt onClick={deleteFunc} size={24} color={'#fff'} />
                 </div>
             </div>
-            {children}
+            <div 
+                className={styles.fieldset}
+                style={{ maxHeight: `${isOpen ? contentHeight : '0px'}`, transition: 'max-height 0.6s ease-out' }}
+            >
+               <div ref={contentRef} id="accordion-content">
+                    {children}
+                </div>
+            </div>
         </section>
     )
 }

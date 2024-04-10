@@ -101,7 +101,7 @@ const Reference = () => {
                                     </div>
                                 </div>
                             </div>
-                            <FaRegTrashAlt size={30} onClick={() => deleteCurrentField(reference.id, index)} />
+                            <FaRegTrashAlt size={24} onClick={() => deleteCurrentField(reference.id, index)} />
                         </div>
                     ))}
                 </fieldset>

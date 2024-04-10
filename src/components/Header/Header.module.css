@@ -6,7 +6,6 @@
     height: 100px;
     background-color: #50536c;
     margin-bottom: 20px;
-    padding: 0 40px;
 }
 
 .logo {
@@ -16,6 +15,9 @@
 }
 
 .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     max-width: 1140px;
     width: 100%;
 }

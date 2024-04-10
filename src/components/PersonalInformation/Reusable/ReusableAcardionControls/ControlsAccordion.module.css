@@ -6,7 +6,22 @@
     width: 100%;
     margin-bottom: 20px;
     user-select: none;
+    overflow: hidden;
 }
+
+.fieldset {
+    overflow: hidden;
+    transition: max-height 1.4s ease-in; /* Применяем анимацию к высоте */
+    max-height: 0; /* Начальное значение для плавного открытия */
+  }
+  
+  .expanded {
+    max-height: 1000px; /* Высота для плавного открытия */
+  }
+  
+  .collapsed {
+    max-height: 0; /* Закрытый аккордеон */
+  }
 
 .header {
     display: flex;
