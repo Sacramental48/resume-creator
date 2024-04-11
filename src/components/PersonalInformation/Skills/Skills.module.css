@@ -23,6 +23,18 @@
 
 .trash {
     margin-left: auto;
-    margin-right: 20px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 530px) {
+    .skillField {
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .trash {
+        position: absolute;
+        right: 20px;
+        top: 24px;
+    }
 }

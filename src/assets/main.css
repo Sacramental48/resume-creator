@@ -13,6 +13,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .inputAdaptiveFieldsBlock {
@@ -25,14 +27,14 @@ body {
     width: 100%;
     max-width: 120px;
     border-radius: 4px;
-    height: 34px;
-    padding: 4px 6px;
+    padding: 6px 12px;
     cursor: pointer;
     font-size: 20px;
     font-weight: 700;
     background-color: #ffffffc7;
     border: 3px solid #50536c;
     color: #50536c;
+    text-align: center;
 }
 
 .semiColor {
@@ -49,5 +51,12 @@ body {
     .inputAdaptiveFieldsBlock input {
         flex: 1 1 calc(50% - 10px);
         max-width: calc(50%);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .button {
+        padding: 4px 6px;
+        font-size: 14px;
     }
 }
