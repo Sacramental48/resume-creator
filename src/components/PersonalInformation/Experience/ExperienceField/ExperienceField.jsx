@@ -36,8 +36,8 @@ const ExperienceField = ({ deleteField, experienceField, addNewExperienceField, 
         <section className={styles.experienceField}>
             <div className={'inputAdaptiveFieldsBlock'} style={{ flexWrap: 'nowrap' }}>
                 <CustomInput type="text" name="position" onChange={getInputValue} placeholder="Position" />
-                <CustomInput type="text" name="from" onChange={getInputValue} placeholder="From (year)" />
-                <CustomInput type="text" name="to" onChange={getInputValue} placeholder="To (year)" />
+                <CustomInput className={styles.date} type="date" name="from" onChange={getInputValue} />
+                <CustomInput className={styles.date} type="date" name="to" onChange={getInputValue} />
             </div>
             <CustomInput type="text" name="company" onChange={getInputValue} placeholder="Company" />
             <textarea className={styles.textArea} type="text" name="accomplishments" onChange={getInputValue} placeholder="Accomplishments" />

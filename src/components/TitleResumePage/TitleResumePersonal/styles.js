@@ -3,6 +3,8 @@ import { StyleSheet } from '@react-pdf/renderer';
 export const styles = StyleSheet.create({
     image: {
         width: '100%',
+        objectFit: 'cover',
+        borderRadius: '10px',
         height: 160,
         margin: '0 auto',
         marginBottom: 12,
