@@ -13,7 +13,7 @@ const Main = () => {
     const languageFields = useSelector(state => state.languageStateField);
     const referenceFields = useSelector(state => state.referenceStateField);
     const togglePDF = useSelector(state => state.initialBooleanState.togglePDFValue);
-    
+    console.log(inputPersonalDataField);
     return (
         <main className={styles.main}>
             {togglePDF ? (

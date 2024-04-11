@@ -12,6 +12,7 @@ import CustomInput from '@/components/UI/Input/Input.jsx'
 import styles from './PersonalInformation.module.css'
 
 const PersonalInformation = () => {
+    const [file, setFile] = React.useState(null);
     const inputDataMainField = useSelector(state => state.personalField);
     const toggleBooleanValue = useSelector(state => state.initialBooleanState.booleanValue)
     const dispatch = useDispatch();
@@ -50,6 +51,12 @@ const PersonalInformation = () => {
         }
     };
 
+    const sendIcon = (e) => {
+        const uploadedFile = e.target.files[0];
+        setFile(uploadedFile);
+        dispatch(setPhoto(uploadedFile));
+    }
+
     React.useEffect(() => {
         if(toggleBooleanValue) {
             dispatch(clearPersonalField());
@@ -75,7 +82,13 @@ const PersonalInformation = () => {
                     <div className={styles.columnB}>
                         <CustomInput type="email" name="email" value={inputDataMainField.email} onChange={getInputValue} placeholder="Email" />
                         <CustomInput type="text" name="address" value={inputDataMainField.address} onChange={getInputValue} placeholder="Address" />
-                        <CustomInput type="text" name="photo" value={inputDataMainField.photo} onChange={getInputValue} placeholder="Write the your (photo) URL" />
+                        <div className={styles.inputSend}>
+                            <CustomInput type="text" name="photo" value={inputDataMainField.photo.name || inputDataMainField.phone} onChange={getInputValue} placeholder="Write URL or..." />
+                            <label className={styles.icon}>
+                                Upload
+                                <input className={styles.sendImage} type="file" name="fileEmail" onChange={sendIcon} />
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div>

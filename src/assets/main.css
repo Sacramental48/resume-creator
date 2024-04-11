@@ -24,7 +24,8 @@ body {
 }
 
 .button {
-    width: 100%;
+    display: flex;
+    align-items: center;
     max-width: 120px;
     border-radius: 4px;
     padding: 6px 12px;
@@ -34,7 +35,16 @@ body {
     background-color: #ffffffc7;
     border: 3px solid #50536c;
     color: #50536c;
-    text-align: center;
+    user-select: none;
+}
+
+.button:hover {
+    background-color: rgba(235, 236, 240, 0.7);
+}
+
+.button:active {
+    background-color: rgba(204, 212, 232, .6);
+    border: 3px solid #555987;
 }
 
 .semiColor {
