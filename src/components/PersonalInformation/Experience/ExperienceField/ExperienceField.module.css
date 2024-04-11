@@ -5,12 +5,29 @@
     gap: 10px;
     padding: 20px;
     border-radius: 10px;
-    /* background-color: #ededed; */
 }
 
 .groupAdaptiveInputs {
     display: flex;
     gap: 10px;
+}
+
+.date {
+    color: #000;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.date:focus {
+    border: none;
+    outline: none;
 }
 
 @media screen and (max-width: 475px) {

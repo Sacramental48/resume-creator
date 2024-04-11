@@ -36,8 +36,8 @@ const EducatioField = ({addNewEducationField, educationField, deleteField, index
                 <CustomInput type="text" name="faculty" onChange={getEducationValue} placeholder="Faculty" /> 
             </div> 
             <div className='inputAdaptiveFieldsBlock'> 
-                <CustomInput type="text" name="from" onChange={getEducationValue} placeholder="From (year)" /> 
-                <CustomInput type="text" name="to" onChange={getEducationValue} placeholder="To (year)" /> 
+                <CustomInput className={styles.date} type="date" name="from" onChange={getEducationValue} />
+                <CustomInput className={styles.date} type="date" name="to" onChange={getEducationValue} />
             </div> 
             <div className={styles.buttons}>
                 {index === educationField.length - 1 && <FiFilePlus size={30} onClick={addNewEducationField} title="Add" />}
